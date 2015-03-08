@@ -1,0 +1,19 @@
+{
+  "name": "LWLogger",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@livewind.es/~/LWlogger.git"
+  },
+  "author": "voliva",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^3.8.24",
+    "q": "^1.2.0"
+  }
+}
