@@ -2,7 +2,7 @@ var lwutils = new (require("./lwutils"))();
 var Q = require('q');
 var Data = require("./../../models/data");
 
-module.exports = function(user){
+module.exports = function(user, timezone){
 	var deferred = new Q.defer();
 
 	lwutils.getHTML("www.weatherlink.com", "/user/" + user + "/index.php?view=summary&headers=0&type=1").then(function(html){
@@ -29,7 +29,7 @@ module.exports = function(user){
 
 		// TODO hi ha hagut un error a les 00:09-00:12...
 
-		ret.dateTime = lwutils.getDate(date[2], date[0], date[1], time[0], time[1], "Europe/Madrid");
+		ret.dateTime = lwutils.getDate(date[2], date[0], date[1], time[0], time[1], timezone);
 
 		var temp = new (lwutils.splitter)(html)
 			.cropToStrEx("Outside Temp")

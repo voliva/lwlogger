@@ -15,3 +15,10 @@ Davis:
 - Ojo amb port de sitges... sol petar
 - He tret cullera, que em sembla que està massa lluny del mar...
 
+WeatherDisplayLive
+- Garraf torna a funcionar, que van canviar la URL.
+- Ojo amb oropesa que falla molt....
+- Port d'aro l'he deixat fora, que també falla moltíssim.
+- Xabia l'he treta perque no em sembla de qualitat. Marca molts 0.
+- Pineda l'he treta perque falla massa sovint.
+- Ballena alegre la deixo posada, crec que simplement l'apagen de vacances. Comprobar-ho al 16 de maig!

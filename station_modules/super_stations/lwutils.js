@@ -54,14 +54,17 @@ module.exports = function(){
 
 	// month 1-12
 	this.getDate = function(year, month, day, hour, min, timezone){
+		timezone = timezone || "Europe/Madrid";
+
 		function to2Digit(n){
+			n = Math.floor(n);
 			if(n < 10)
 				return "0" + n;
 			return n;
 		}
 
 		var txt = year + "-" + to2Digit(month) + "-" + to2Digit(day) + " " + to2Digit(hour) + ":" + to2Digit(min);
-		if(timezone){
+		if(timezone && timezone != "UTC"){
 			var _tz = tz(require("timezone/" + timezone));
 			return new Date(_tz(txt, timezone));
 		}else{
