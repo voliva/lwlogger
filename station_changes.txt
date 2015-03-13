@@ -19,6 +19,15 @@ WeatherDisplayLive
 - Garraf torna a funcionar, que van canviar la URL.
 - Ojo amb oropesa que falla molt....
 - Port d'aro l'he deixat fora, que també falla moltíssim.
-- Xabia l'he treta perque no em sembla de qualitat. Marca molts 0.
 - Pineda l'he treta perque falla massa sovint.
 - Ballena alegre la deixo posada, crec que simplement l'apagen de vacances. Comprobar-ho al 16 de maig!
+- He afegit santander, que te una estacio a la platja
+
+
+Portugal
+http://meteofonteslitoral.cm-lagoa.pt/
+
+França
+http://meteoboissoleil.c.la/
+http://www.jf-i2r.com/ (la rochelle)
+
