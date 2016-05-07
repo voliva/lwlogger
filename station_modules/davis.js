@@ -4,9 +4,7 @@ var Data = require("./../models/data");
 
 var stations = [];
 stations.push({code: "cma", arg: "altafulla"});
-stations.push({code: "ampolla", arg: "meteoampolla"});
 stations.push({code: "canyelles", arg: "cncanyelles"});
-stations.push({code: "ampolla", arg: "meteoampolla"});
 stations.push({code: "getxo", arg: "rcmarsc"});
 stations.push({code: "herradura", arg: "puntadelamona"});
 stations.push({code: "malaga", arg: "tds"});
@@ -14,10 +12,20 @@ stations.push({code: "santapolacabo", arg: "runahue"});
 stations.push({code: "sariera", arg: "pverhoeven"});
 stations.push({code: "sitges", arg: "portdesitges"});
 stations.push({code: "stantonicalonge", arg: "calongeplatjatv"});
+stations.push({code: "palamosplatja", arg: "ellado"});
 stations.push({code: "tavernes", arg: "meteovallplaya"});
 stations.push({code: "cmt", arg: "cmtorredembarra"});
 stations.push({code: "valencia_marinareal", arg: "marinareal"});
 stations.push({code: "cnvi", arg: "cnvitoria"});
+stations.push({code: "altea", arg: "meteocnaltea"});
+stations.push({code: "cascais", arg: "beachcamguincho"});
+stations.push({code: "praiagrande", arg: "beachcampraiagrande"});
+stations.push({code: "oportobares", arg: "parapenteferrol"});
+stations.push({code: "zumaia", arg: "salvetzumaia1"});
+stations.push({code: "torreviejasetsaas", arg: "setsaas"});
+stations.push({code: "Cala Gamba", arg: "cncg"});
+stations.push({code: "Andratx", arg: "tinin30"});
+stations.push({code: "Ibiza", arg: "ibizapilot"});
 stations.push({code: "empuriabrava", arg: "trastitu", post: function(res){
   return res.then(function(data){
     data.dir = Math.floor(data.dir + 180) % 360;

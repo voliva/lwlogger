@@ -5,11 +5,20 @@ Davis:
 - He afegit sa riera, a veure que tal...
 - He afegit sant antoni de calonge, que sembla bona (estació caseta SOS a la platja..)
 - He afegit l'estació del club nautic canyelles.
-- He afegit l'estació de Ampolla, al delta del ebre.
 - He afegit l'estació del club nautic Marina Real Juan Carlos I.
 - He afegit l'estació de Tavernes, al sud de Cullera - Nord de gandia. Tenen un formulari per demanar dades... demanar permís!
 - He afegit l'estació del cabo de santa pola.
+- He afegit l'estació de palamos platja gran
+- He afegit l'estació de altea
 - He afegit l'estació del port de malaga.
+- He afegit l'estació de cascais
+- He afegit l'estació de praia grande
+- He afegit l'estació de oporto bares
+- He afegit l'estació de zumaia
+- He afegit l'estació de torrevieja
+- He afegit l'estació de cala gamba
+- He afegit l'estació de andratx
+- He afegit l'estació de ibiza
 - He afegit l'estació de La Herradura, a veure que tal...
 - Ojo amb empuriabrava... no es molt fiable.
 - Ojo amb port de sitges... sol petar
@@ -30,4 +39,3 @@ http://meteofonteslitoral.cm-lagoa.pt/
 França
 http://meteoboissoleil.c.la/
 http://www.jf-i2r.com/ (la rochelle)
-
