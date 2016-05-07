@@ -1,8 +1,31 @@
-var lwutils = new (require("./lwutils"))();
+var lwutils = new (require("./super_stations/lwutils"))();
 var Q = require('q');
-var Data = require("./../../models/data");
+var Data = require("./../models/data");
 
-module.exports = function(user, timezone){
+var stations = [];
+stations.push({code: "cma", arg: "altafulla"});
+stations.push({code: "ampolla", arg: "meteoampolla"});
+stations.push({code: "canyelles", arg: "cncanyelles"});
+stations.push({code: "ampolla", arg: "meteoampolla"});
+stations.push({code: "getxo", arg: "rcmarsc"});
+stations.push({code: "herradura", arg: "puntadelamona"});
+stations.push({code: "malaga", arg: "tds"});
+stations.push({code: "santapolacabo", arg: "runahue"});
+stations.push({code: "sariera", arg: "pverhoeven"});
+stations.push({code: "sitges", arg: "portdesitges"});
+stations.push({code: "stantonicalonge", arg: "calongeplatjatv"});
+stations.push({code: "tavernes", arg: "meteovallplaya"});
+stations.push({code: "cmt", arg: "cmtorredembarra"});
+stations.push({code: "valencia_marinareal", arg: "marinareal"});
+stations.push({code: "cnvi", arg: "cnvitoria"});
+stations.push({code: "empuriabrava", arg: "trastitu", post: function(res){
+  return res.then(function(data){
+    data.dir = Math.floor(data.dir + 180) % 360;
+    return data;
+  });
+}});
+
+function fetcher(user, timezone){
 	var deferred = new Q.defer();
 
 	lwutils.getHTML("www.weatherlink.com", "/user/" + user + "/index.php?view=summary&headers=0&type=1").then(function(html){
@@ -16,7 +39,7 @@ module.exports = function(user, timezone){
 			.getToStrEx(" ")
 			.getString()
 			.split(":");
-		
+
 		var date = new (lwutils.splitter)(html)
 			.cropToStrEx("summary_timestamp")
 			.cropToStrEx("Current Conditions as of ")
@@ -117,4 +140,9 @@ module.exports = function(user, timezone){
 	});
 
 	return deferred.promise;
+}
+
+module.exports = {
+  stations: stations,
+  fetch: fetcher
 }
