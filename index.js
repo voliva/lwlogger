@@ -1,6 +1,6 @@
 var fs = require("fs");
 
-var stationToRun = process.argv[2];
+var stationToRun = "mctest"; // process.argv[2];
 
 var fetchers = [];
 fs.readdirSync("./station_modules").forEach(function(file){
