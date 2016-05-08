@@ -3,7 +3,7 @@ var Q = require('q');
 var Data = require("./../models/data");
 
 var stations = [];
-stations.push({code: "mctest", arg: {region: "ESCAT", code: "ESCAT0800000008915A"}});
+stations.push({code: "stcarlesrapita", arg: {region: "ESCAT", code: "ESCAT4300000043540A"}});
 
 var MCData = {};
 function getMCData(region){
@@ -41,17 +41,31 @@ function fetcher(args, timezone){
     var captureRegexp = /<td.*?>(.*?)<\/td/g;
     var i = 0;
     var res;
+    var ret = new Data();
+    ret.dateTime = new Date();
     while(res = captureRegexp.exec(html)){
-      console.log(i, res[1]);
+      if(!res || res.length < 2) break;
+
+      res = res[1].replace(",",".");
+      var resf = parseFloat(res);
+      if(i == 1 && resf){
+        ret.temp = resf;
+      }else if(i == 4 && resf){
+        ret.hidro = resf;
+      }else if(i == 7 && resf){
+        ret.pressure = resf;
+      }else if(i == 10){
+        res = res.split("&nbsp;");
+        if(res.length > 0){
+          ret.dir = lwutils.txtToDir(res[1], 0);
+          ret.wind = lwutils.kmhToKnots(parseFloat(res[0].replace(",", ".")));
+        }
+      }
+
       i++;
     }
 
-    /* Now it's col 10
-    var windCaptureRegexp = />([0-9]+)&nbsp;([NSEW]+)</g;
-    res = windCaptureRegexp.exec(html);
-    if(res){
-      console.log("Wind", res[1], "Dir", res[2]);
-    }*/
+    return ret;
   });
 }
 

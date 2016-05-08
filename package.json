@@ -14,7 +14,7 @@
   "author": "voliva",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^3.8.24",
+    "mongoose": "^4.4.15",
     "q": "^1.2.0",
     "timezone": "0.0.39"
   }
