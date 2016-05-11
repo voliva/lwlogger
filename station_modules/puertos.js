@@ -68,29 +68,63 @@ function fetcher(id, timezone){
       .getString()
       .split("\",\"");
 
+		/* Logic
+		1. datetime format is NN-NN-NNNN NN:NN:NN
+		2. if it contains a mb it's pressure
+		3. if it contains ºC it's temperature, if it's behind V
+		4. the first m/s is wind
+		5. the first º after wind is dir
+		4. next m/s is gust
+		*/
+
     var ret = new Data();
-    // 3 time
-    if(array.length == 40){
-      ret.pressure = parseFloat(array[4]);
-      ret.temp = parseFloat(array[5]);
-      ret.wind = lwutils.mpsToKnots(parseFloat(array[15]));
-      ret.dir = parseFloat(array[16]);
-      return ret;
-    }else if(array.length == 15){
-      /* 0 2 12 1
-      "java.util.HashMap/1797211028"
-      "java.lang.Integer/3438268394"
-      "java.lang.String/2004016611
-      51 52 */
-      ret.pressure = parseFloat(array[6]);
-      ret.wind = lwutils.mpsToKnots(parseFloat(array[9]));
-      ret.gust = lwutils.mpsToKnots(parseFloat(array[10]))
-      ret.dir = parseFloat(array[11]);
-      return ret;
-    }else{
-      console.log("Unknown length: " + array.length, id);
-      return null;
-    }
+		var timeRegex = /^([0-9]{2})\-([0-9]{2})\-([0-9]{4}) ([0-9]{2}):([0-9]{2}):([0-9]{2})$/;
+		var vFound = false,
+			windFound = false;
+		array.forEach(function(v){
+			if(!ret.time){
+				var match = timeRegex.exec(v);
+				if(match){
+					ret.dateTime = new Date(
+						match[3] + "-" +
+						match[2] + "-" +
+						match[1] + "T" +
+						match[4] + ":" +
+						match[5] + ":" +
+						match[6] + "Z"
+					);
+					return;
+				}
+			}
+
+			if(v.indexOf("(mb)") >= 0){
+				ret.pressure = parseFloat(v);
+				return;
+			}
+			if(v.indexOf("(V)") >= 0){
+				vFound = true;
+				return;
+			}
+			if(!ret.temperature && v.indexOf("(ºC)") >= 0){
+				ret.temperature = parseFloat(v);
+				return;
+			}
+
+			if(v.indexOf("(m/s)") >= 0){
+				if(!windFound){
+					ret.wind = lwutils.mpsToKnots(parseFloat(v));
+					windFound = true;
+					return;
+				}else if(!ret.gust){
+					ret.gust = lwutils.mpsToKnots(parseFloat(v));
+				}
+			}
+
+			if(!ret.dir && windFound && v.indexOf("(º)") >= 0){
+				ret.dir = parseFloat(v);
+			}
+		});
+		return ret;
 	}, function(err){
     console.log("Err", err);
   });
