@@ -13,7 +13,9 @@ stations.push({code: "cno", arg: {host: "www.cnoropesa.com", path: "/wd/clientra
 stations.push({code: "santander", arg: {host: "tiempo.fiochi.com", path: "/clientraw.txt"}});
 stations.push({code: "stperepescador", arg: {host: "www.ballena-alegre.com", path: "/meteo/clientraw.txt"}});
 stations.push({code: "xabia", arg: {host: "www.meteoxabia.com", path: "/clientraw.txt"}});
-
+stations.push({code: "mallorca/portopetro", arg: {host: "www.meteodemallorca.com", path:"/portopetro/clientraw.txt"}});
+stations.push({code: "mallorca/calamillor", arg: {host: "www.meteodemallorca.com", path:"/bahia_cala_millor/clientraw.txt"}});
+stations.push({code: "mallorca/eurotel", arg: {host: "www.meteodemallorca.com", path:"/eurotel/clientraw.txt"}});
 
 function fetcher(args, timezone){
 	var host = args.host;
