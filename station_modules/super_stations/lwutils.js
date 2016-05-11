@@ -34,7 +34,9 @@ module.exports = function(){
 	}
 	this.postHTML = function(host, path, headers, body){
 		headers = headers || {};
-		parameters = parameters || "";
+		body = body || "";
+
+		headers["Content-Length"] = body.length;
 
 		var deferred = Q.defer();
 
@@ -44,9 +46,22 @@ module.exports = function(){
 			path: path,
 			headers: headers
 		}, function(res){
-			deferred.resolve(res);
+			res.setEncoding("utf8");
+			var body = "";
+			res.on("data", function(chunk){
+				body += chunk;
+			});
+			res.on("end", function(){
+				if(res.statusCode >= 400){
+					deferred.reject({
+						status: res.statusCode,
+						body: body
+					});
+				}
+				deferred.resolve(body);
+			});
 		});
-		req.write(postData);
+		req.write(body);
 		req.end();
 
 		return deferred.promise;
