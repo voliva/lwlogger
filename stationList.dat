@@ -69,12 +69,11 @@ F Andratx cvpa    3/10/2012       http://www.cvpa.es/estacion_metereologica.html
 F Santa Ponça     cnsp    7/12/2012       http://www.cnsp.es/?url=meteo.php       CN Santa Ponça       1       39.5124508      2.4655938
 #
 # SAIH
-? Ebro    saih/ebro       05/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       43.0206347      -3.91645849
-? Alloz   saih/alloz      05/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       42.7216873      -1.9453542
-? La Loteta       saih/laloteta   02/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       41.8189369      -1.3240277
-? La Sotonera     saih/lasotonera 05/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       42.1107767      -0.682049
-? La Estanca      saih/laestanca  07/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       41.060284       -0.189586
-=> http://www.saihebro.com/saihebro/index.php?url=/datos/ficha/estacion:EM01
+I Ebro    saih/ebro       05/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       43.0206347      -3.91645849
+I Alloz   saih/alloz      05/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       42.7216873      -1.9453542
+F La Loteta       saih/laloteta   02/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       41.8189369      -1.3240277
+I La Sotonera     saih/lasotonera 05/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       42.1107767      -0.682049
+I La Estanca      saih/laestanca  07/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       41.060284       -0.189586
 #
 # Resto
 ? Marbella        marbella        27/9/2013       http://www.meteopuertobanus.es/ Meteo Puerto Banus   1       36.4875 -4.9525

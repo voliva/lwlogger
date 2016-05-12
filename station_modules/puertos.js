@@ -105,8 +105,8 @@ function fetcher(id, timezone){
 				vFound = true;
 				return;
 			}
-			if(!ret.temperature && v.indexOf("(ºC)") >= 0){
-				ret.temperature = parseFloat(v);
+			if(!ret.temp && v.indexOf("(ºC)") >= 0){
+				ret.temp = parseFloat(v);
 				return;
 			}
 
