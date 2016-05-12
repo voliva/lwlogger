@@ -1,83 +1,85 @@
 19 # Version
-#
+# Fora/In/New
 # Nom   Codi    Data    Web     Nom_Empresa     Ratxa[0,1]
 #
 # França
-Leucate leucate 25/8/2013       http://www.leucate-port.fr/index.php/meteo/meteo-direct-graphweather Port Leucate    1       42.8616372      3.0392218
+F Leucate leucate 25/8/2013       http://www.leucate-port.fr/index.php/meteo/meteo-direct-graphweather Port Leucate    1       42.8616372      3.0392218
 # Catalunya
-Llançà  portllanca      25/6/2013       http://www.meteoclimatic.com/   Meteoclimatic   1   42.3729514       3.1632042
-Port de la Selva        cnps    12/11/2012      http://www.cnps.es/servimet.php CNPS    1   42.341988        3.201656
-Cadaqués        mrcadaques      14/6/2013       http://www.weatherlink.com/user/mrcadaques/ WeatherLink      1       42.28677        3.288174
-Roses   genr    3/9/2012        http://www.genroses.cat/?q=web/meteo    GEN Roses       1   42.2557369       3.179673
+F Llançà  portllanca      25/6/2013       http://www.meteoclimatic.com/   Meteoclimatic   1   42.3729514       3.1632042
+I Port de la Selva        cnps    12/11/2012      http://www.cnps.es/servimet.php CNPS    1   42.341988        3.201656
+F Cadaqués        mrcadaques      14/6/2013       http://www.weatherlink.com/user/mrcadaques/ WeatherLink      1       42.28677        3.288174
+? Roses   genr    3/9/2012        http://www.genroses.cat/?q=web/meteo    GEN Roses       1   42.2557369       3.179673
 #       Port Estrella   wundergr/roses  24/9/2013       http://www.meteoportestrella.es/    Meteo Port Estrella      1       42.270688       3.143896        # nou
-Empuriabrava    empuriabrava    14/6/2013       http://www.weatherlink.com/user/trastitu/   WeatherLink      1       42.249137605719 3.1338500976562
-St Pere Pescador        stperepescador  17/7/2013       http://www.ballena-alegre.com/  Càmping Ballena Alegre       1       42.153054       3.1122941
-L'Escala        cnle    18/7/2012       http://www.nauticescala.com/ca/port-esportiu-a-la-costa-brava/meteo.php      CN l'Escala     0       42.1168081      3.1489992
-Estartit        cne     3/9/2012        http://www.cnestartit.es/       CN Estartit     0   42.0539531       3.2047355
-Palamós cncb    12/11/2012      http://www.cncostabrava.com/meteo.php?idm=1     CN Costa Brava       1       41.842856       3.128482
-Port d'Aro      cnpa    18/7/2012       http://www.clubnauticportdaro.cat/?page_id=1058 CN Port d'Aro        0       41.8020547      3.0641985
-St Feliu de Guíxols     stfeliu 26/6/2013       http://www.meteoclimatic.com/   Meteoclimatic1       41.7894652      3.0288443
-Blanes  aemet/blanes    27/12/2012      http://www.aemet.es/es/eltiempo/observacion/ultimosdatos     AEMET   1       41.6769271      2.8048923
-Santa Susana    aemet/santasusana       27/12/2012      http://www.aemet.es/es/eltiempo/observacion/ultimosdatos     AEMET   1       41.6514987      2.6966999
-Pineda de Mar   pinedamar       25/6/2013       http://serveis.pinedasensefils.cat/     Pinedasensefils      1       41.6245101      2.6827579
-Canet de Mar    cvcm    20/11/2012      http://www.clubvelacanet.com/   CV Canet        1   41.5851479       2.578496
-El Balís        cneb    4/10/2012       http://www.cnelbalis.com/meteo_estaciones.asp   CN el Balis  1       41.5598564      2.5076723
+? Empuriabrava    empuriabrava    14/6/2013       http://www.weatherlink.com/user/trastitu/   WeatherLink      1       42.249137605719 3.1338500976562
+F St Pere Pescador        stperepescador  17/7/2013       http://www.ballena-alegre.com/  Càmping Ballena Alegre       1       42.153054       3.1122941
+I L'Escala        cnle    18/7/2012       http://www.nauticescala.com/ca/port-esportiu-a-la-costa-brava/meteo.php      CN l'Escala     0       42.1168081      3.1489992
+I Estartit        cne     3/9/2012        http://www.cnestartit.es/       CN Estartit     0   42.0539531       3.2047355
+? Palamós cncb    12/11/2012      http://www.cncostabrava.com/es/default/meteo    CN Costa Brava       1       41.842856       3.128482
+I Port d'Aro      cnpa    18/7/2012       http://www.clubnauticportdaro.cat/?page_id=1058 CN Port d'Aro        0       41.8020547      3.0641985
+F St Feliu de Guíxols     stfeliu 26/6/2013       http://www.meteoclimatic.com/   Meteoclimatic1       41.7894652      3.0288443
+F Blanes  aemet/blanes    27/12/2012      http://www.aemet.es/es/eltiempo/observacion/ultimosdatos     AEMET   1       41.6769271      2.8048923
+F Santa Susana    aemet/santasusana       27/12/2012      http://www.aemet.es/es/eltiempo/observacion/ultimosdatos     AEMET   1       41.6514987      2.6966999
+I Pineda de Mar   pinedamar       25/6/2013       http://serveis.pinedasensefils.cat/     Pinedasensefils      1       41.6245101      2.6827579
+F Canet de Mar    cvcm    20/11/2012      http://www.clubvelacanet.com/   CV Canet        1   41.5851479       2.578496
+? El Balís        cneb    4/10/2012       http://www.cnelbalis.com/meteo.asp   CN el Balis  1       41.5598564      2.5076723
 # no funciona Cabrera de Mar    wundergr/cabrera        24/9/2013       http://ciezar.homeip.net/weather/wxgauge.php Meteo Cabrera   1       41.510081       2.402844        # nou
-Vilassar de Mar cnvm    3/9/2012        http://www.cnvilassar.com/ftp/  CN Vilassar     1   41.5046941       2.3987451
-Premià de Mar   meteopremia     25/6/2013       http://www.meteopremia.com/     Meteopremia 141.4913323      2.3667576
-El Masnou       cnm     18/7/2012       http://www.nauticmasnou.com/meteo.html  CN Masnou   041.4782129      2.3175895
-Badalona        pontpetroli     2/10/2012       http://www.pontdelpetroli.org/ultimes24.aspxPont del petroli 1       41.4401889      2.2489572
-Barcelona       cmv     17/7/2012       http://www.velabarcelona.com/index.php/ca/el-centre-municipal-de-vela/estacio-meteo.html     Vela Barcelona  1       41.3873219      2.2026515
-Aeroport del Prat       aemet/aeroportprat      28/12/2012      http://www.aemet.es/es/eltiempo/observacion/ultimosdatos     AEMET   1       41.2913622      2.0594859
+? Vilassar de Mar cnvm    3/9/2012        http://www.cnvilassar.com/ftp/  CN Vilassar     1   41.5046941       2.3987451
+? Premià de Mar   meteopremia     25/6/2013       http://www.meteopremia.com/     Meteopremia 141.4913323      2.3667576
+F El Masnou       cnm     18/7/2012       http://www.nauticmasnou.com/meteo.html  CN Masnou   041.4782129      2.3175895
+F Badalona        pontpetroli     2/10/2012       http://www.pontdelpetroli.org/ultimes24.aspxPont del petroli 1       41.4401889      2.2489572
+I Barcelona       cmv     17/7/2012       http://www.velabarcelona.com/index.php/ca/el-centre-municipal-de-vela/estacio-meteo.html     Vela Barcelona  1       41.3873219      2.2026515
+F Aeroport del Prat       aemet/aeroportprat      28/12/2012      http://www.aemet.es/es/eltiempo/observacion/ultimosdatos     AEMET   1       41.2913622      2.0594859
 # Castelldefels kastaswind      4/11/2012       http://www.kastaswind.com/met/inicio.html   Kastaswind       1
-Castelldefels   17nudos 4/7/2013        http://www.17nudos.com/index.php        17 nudos    141.2652271      1.9753933
-Garraf  cng     18/7/2012       http://www.clubnauticgarraf.com/        CN Garraf       0   41.250846        1.898581
-Sitges  cms     18/7/2012       http://clubdemardesitges.com/   CM Sitges       1       41.2328966   1.8027878
-Port Sitges     portsitges      14/6/2013       http://www.weatherlink.com/user/portdesitges/Port de Sitges Aiguadolç        1       41.234689817826 1.8256321549416
-Vilanova        cnv     4/11/2012       http://www.cnvilanova.cat/ct/   CN Vilanova     1   41.2157489       1.7329538
-Torredembarra   cmt     9/7/2012        http://cmtorredembarra.wordpress.com/   CM Torredembarra     1       41.1455455      1.4163566
-Altafulla       cma     18/7/2012       http://www.clubmaritimaltafulla.com/    CM Altafulla141.1335629      1.3739482
-Cambrils        metcambrils     5/10/2012       http://meteocambrils.cat/       Meteocambrils1       41.0666754      1.0603606
-Hospitalet - Vandellós  cnhv    3/9/2012        http://www.cnhv.net/?page_id=2181&lang=ca   CNHV     1       40.990924       0.9237179
-Sant Jaume d'Enveja     aemet/santjaumeenveja   27/12/2012      http://www.aemet.es/es/eltiempo/observacion/ultimosdatos     AEMET   1       40.7066188      0.808142
+? Castelldefels   17nudos 4/7/2013        http://www.17nudos.com/index.php        17 nudos    141.2652271      1.9753933
+I Garraf  cng     18/7/2012       http://www.clubnauticgarraf.com/        CN Garraf       0   41.250846        1.898581
+F Sitges  cms     18/7/2012       http://clubdemardesitges.com/   CM Sitges       1       41.2328966   1.8027878
+I Port Sitges     portsitges      14/6/2013       http://www.weatherlink.com/user/portdesitges/Port de Sitges Aiguadolç        1       41.234689817826 1.8256321549416
+? Vilanova        cnv     4/11/2012       http://cnvilanova.cat/meteo/   CN Vilanova     1   41.2157489       1.7329538
+I Torredembarra   cmt     9/7/2012        http://cmtorredembarra.wordpress.com/   CM Torredembarra     1       41.1455455      1.4163566
+I Altafulla       cma     18/7/2012       http://www.clubmaritimaltafulla.com/    CM Altafulla141.1335629      1.3739482
+F Cambrils        metcambrils     5/10/2012       http://meteocambrils.cat/       Meteocambrils1       41.0666754      1.0603606
+F Hospitalet - Vandellós  cnhv    3/9/2012        http://www.cnhv.net/?page_id=2181&lang=ca   CNHV     1       40.990924       0.9237179
+F Sant Jaume d'Enveja     aemet/santjaumeenveja   27/12/2012      http://www.aemet.es/es/eltiempo/observacion/ultimosdatos     AEMET   1       40.7066188      0.808142
 #
 # Valencia
-Oropesa del Mar cno     3/9/2012        http://www.cnoropesa.com/index.php?option=com_content&view=article&id=149%3Aimagen-de-la-bocana-en-directo&catid=51&Itemid=126       CN Oropesa  040.0773818      0.1332843
-Benicassim      cvb     5/9/2012        http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=benicassim    Comunitat Valenciana    1       40.055385       0.0641504
-Saler Windsurf  cvd     17/10/2012      http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=saler Comunitat Valenciana    1       39.3825 -0.3325
-Cullera meteocullera    19/06/2013      http://meteocullera.webcindario.com/    MeteoCullera139.1628017573   -0.24566888809204
-Gandia  rcng    5/9/2012        http://www.rcngandia.com/nautic_php/web_php/index.php   RCN Gandia   0       38.9963738      -0.155611
-Piles   piles   27/12/2012      http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=piles Comunitat Valenciana    1       38.941862       -0.132292
-WindOliva       windoliva       19/06/2013      http://www.windoliva.com/       WindOliva   138.905528       -0.066583
-Oliva   oliva   27/12/2012      http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=olivap        Comunitat Valenciana    1       38.922218       -0.120375
-Deveses deveses 28/12/2012      http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=denia-deveses Comunitat Valenciana    1       38.8719012      -0.0244531
-Dénia   denia   27/12/2012      http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=denia-puerto2 Comunitat Valenciana    1       38.8387884      0.1157856
-Xàbia   xabia   24/9/2013       http://www.meteoxabia.com       Meteo Xabia     1       38.7967327   0.1841068
+I Oropesa del Mar cno     3/9/2012        http://www.cnoropesa.com/index.php?option=com_content&view=article&id=149%3Aimagen-de-la-bocana-en-directo&catid=51&Itemid=126       CN Oropesa  040.0773818      0.1332843
+F Benicassim      cvb     5/9/2012        http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=benicassim    Comunitat Valenciana    1       40.055385       0.0641504
+F Saler Windsurf  cvd     17/10/2012      http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=saler Comunitat Valenciana    1       39.3825 -0.3325
+? Cullera meteocullera    19/06/2013      http://meteocullera.webcindario.com/    MeteoCullera139.1628017573   -0.24566888809204
+F Gandia  rcng    5/9/2012        http://www.rcngandia.com/nautic_php/web_php/index.php   RCN Gandia   0       38.9963738      -0.155611
+F Piles   piles   27/12/2012      http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=piles Comunitat Valenciana    1       38.941862       -0.132292
+? WindOliva       windoliva       19/06/2013      http://www.windoliva.com/meteooliva/meteocurrent.php?idmen=3      WindOliva   138.905528       -0.066583
+F Oliva   oliva   27/12/2012      http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=olivap        Comunitat Valenciana    1       38.922218       -0.120375
+F Deveses deveses 28/12/2012      http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=denia-deveses Comunitat Valenciana    1       38.8719012      -0.0244531
+F Dénia   denia   27/12/2012      http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=denia-puerto2 Comunitat Valenciana    1       38.8387884      0.1157856
+I Xàbia   xabia   24/9/2013       http://www.meteoxabia.com       Meteo Xabia     1       38.7967327   0.1841068
 # Basetes       cnb     5/9/2012        http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=benissa       Comunitat Valenciana    1
-Calpe   rcnc    5/9/2012        http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=calpe Comunitat Valenciana    1       38.6436469      0.0456876
-Altea   altea   27/12/2012      http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=altea Comunitat Valenciana    1       38.600597       -0.047726
-Santa Pola      cwsp    5/9/2012        http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=santa-pola    Comunitat Valenciana    1       38.1915307      -0.5756021
+F Calpe   rcnc    5/9/2012        http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=calpe Comunitat Valenciana    1       38.6436469      0.0456876
+F Altea   altea   27/12/2012      http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=altea Comunitat Valenciana    1       38.600597       -0.047726
+F Santa Pola      cwsp    5/9/2012        http://www.comunitatvalenciana.com/temperaturas/el-tiempo/0?em=santa-pola    Comunitat Valenciana    1       38.1915307      -0.5756021
 # Torrevieja    wundergr/torrevieja     24/9/2013       http://www.eltiempoentorrevieja.es/ Proyecto Mastral 1       0       0       # nou
-Torrevieja - Acequión   mastral/acequion        5/9/2013        http://www.eltiempoentorrevieja.es/  Proyecto Mastral        1       37.980314       -0.688938       # nou
-Torrevieja - Los Altos  mastral/altos   5/9/2013        http://www.eltiempoentorrevieja.es/ Proyecto Mastral 1       37.952016       -0.726730       # nou
+? Torrevieja - Acequión   mastral/acequion        5/9/2013        http://www.eltiempoentorrevieja.es/  Proyecto Mastral        1       37.980314       -0.688938       # nou
+? Torrevieja - Los Locos
+F Torrevieja - Los Altos  mastral/altos   5/9/2013        http://www.eltiempoentorrevieja.es/ Proyecto Mastral 1       37.952016       -0.726730       # nou
 #
 # Murcia
-Lo Pagán        cnlp    4/3/2014        http://www.clubnauticolopagan.es/       CN Lo Pagán 137.816623       -0.784948
+F Lo Pagán        cnlp    4/3/2014        http://www.clubnauticolopagan.es/       CN Lo Pagán 137.816623       -0.784948
 # Balears
-Andratx cvpa    3/10/2012       http://www.cvpa.es/estacion_metereologica.html  CVP Andratx 139.547566       2.383391
-Santa Ponça     cnsp    7/12/2012       http://www.cnsp.es/?url=meteo.php       CN Santa Ponça       1       39.5124508      2.4655938
+F Andratx cvpa    3/10/2012       http://www.cvpa.es/estacion_metereologica.html  CVP Andratx 139.547566       2.383391
+F Santa Ponça     cnsp    7/12/2012       http://www.cnsp.es/?url=meteo.php       CN Santa Ponça       1       39.5124508      2.4655938
 #
 # SAIH
-Ebro    saih/ebro       05/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       43.0206347      -3.91645849
-Alloz   saih/alloz      05/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       42.7216873      -1.9453542
-La Loteta       saih/laloteta   02/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       41.8189369      -1.3240277
-La Sotonera     saih/lasotonera 05/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       42.1107767      -0.682049
-La Estanca      saih/laestanca  07/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       41.060284       -0.189586
+? Ebro    saih/ebro       05/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       43.0206347      -3.91645849
+? Alloz   saih/alloz      05/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       42.7216873      -1.9453542
+? La Loteta       saih/laloteta   02/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       41.8189369      -1.3240277
+? La Sotonera     saih/lasotonera 05/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       42.1107767      -0.682049
+? La Estanca      saih/laestanca  07/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       41.060284       -0.189586
+=> http://www.saihebro.com/saihebro/index.php?url=/datos/ficha/estacion:EM01
 #
 # Resto
-Marbella        marbella        27/9/2013       http://www.meteopuertobanus.es/ Meteo Puerto Banus   1       36.4875 -4.9525
-Cádiz   cadiz   27/9/2013       http://www.tiempoencadiz.es/    Tiempo en Cádiz 1       36.542       -6.284
-Gijón   rcar    20/11/2012      http://www.rcar.es/html/main.asp?id_mapa=12     RC Astur de Regatas  1       43.546855       -5.660341
-Vitoria cnvi    20/11/2012      http://www.cnvitoria.com/estacion.php   CN Vitoria      1   42.94111 -2.6025
-Gallineras      cnga    20/11/2012      http://www.cngallineras.es/index.php/el-tiempo  CN Gallineras        0       36.440151       -6.207134
+? Marbella        marbella        27/9/2013       http://www.meteopuertobanus.es/ Meteo Puerto Banus   1       36.4875 -4.9525
+F Cádiz   cadiz   27/9/2013       http://www.tiempoencadiz.es/    Tiempo en Cádiz 1       36.542       -6.284
+F Gijón   rcar    20/11/2012      http://www.rcar.es/html/main.asp?id_mapa=12     RC Astur de Regatas  1       43.546855       -5.660341
+I Vitoria cnvi    20/11/2012      http://www.cnvitoria.com/estacion.php   CN Vitoria      1   42.94111 -2.6025
+I Gallineras      cnga    20/11/2012      http://www.cngallineras.es/index.php/el-tiempo  CN Gallineras        0       36.440151       -6.207134
 # coordenades de http://twcc.free.fr/ i http://www.weatherlink.com/mapstations.json

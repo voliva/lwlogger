@@ -10,7 +10,7 @@ stations.push({code: "herradura", arg: "puntadelamona"});
 stations.push({code: "malaga", arg: "tds"});
 stations.push({code: "santapolacabo", arg: "runahue"});
 stations.push({code: "sariera", arg: "pverhoeven"});
-stations.push({code: "sitges", arg: "portdesitges"});
+stations.push({code: "portsitges", arg: "portdesitges"});
 stations.push({code: "stantonicalonge", arg: "calongeplatjatv"});
 stations.push({code: "palamosplatja", arg: "ellado"});
 stations.push({code: "tavernes", arg: "meteovallplaya"});
