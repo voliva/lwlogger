@@ -65,10 +65,12 @@ fetchers.forEach(function(fetcher){
 					});
 				});
 			}catch(ex){
-				console.log(ex, station.code, data);
+				console.log(station.code, err, data);
+				console.log(err.stack);
 			}
 		}, function(err){
-			console.log("Error", err, station.code);
+			console.log(station.code, err);
+			console.log(err.stack);
 		});
 		promises.push(p);
 	});
@@ -77,7 +79,7 @@ fetchers.forEach(function(fetcher){
 Q.all(promises).then(function(){
 	stationsMonitor.save();
 }, function(err){
-	console.log("Error, not saving", err);
+	stationsMonitor.save();
 });
 
 // Crazy fast idea: Locate+track where people go sailing in order to discover new places.

@@ -124,6 +124,8 @@ function fetcher(id, timezone){
 				ret.dir = parseFloat(v);
 			}
 		});
+		if(!ret.dateTime) ret.dateTime = new Date();
+
 		return ret;
 	}, function(err){
     console.log("Err", err);

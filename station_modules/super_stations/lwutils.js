@@ -108,8 +108,10 @@ module.exports = function(){
 	}
 
 	this.txtToDir = function(txt, i){
+		if(!txt) return null;
+
 		if(i === undefined) i = 0;
-		
+
 		function charToDir(c){
 			if(c == 'N') return 0;
 			if(c == 'E') return 90;

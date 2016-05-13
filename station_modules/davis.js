@@ -3,7 +3,7 @@ var Q = require('q');
 var Data = require("./../models/data");
 
 var stations = [];
-stations.push({code: "cma", arg: "altafulla"});
+stations.push({code: "cma", arg: "cmaltafulla"});
 stations.push({code: "canyelles", arg: "cncanyelles"});
 stations.push({code: "getxo", arg: "rcmarsc"});
 stations.push({code: "herradura", arg: "puntadelamona"});
@@ -19,7 +19,7 @@ stations.push({code: "valencia_marinareal", arg: "marinareal"});
 stations.push({code: "cnvi", arg: "cnvitoria"});
 stations.push({code: "altea", arg: "meteocnaltea"});
 stations.push({code: "cascais", arg: "beachcamguincho"});
-stations.push({code: "praiagrande", arg: "beachcampraiagrande"});
+stations.push({code: "praiagrande", arg: "beachcampgrande"});
 stations.push({code: "oportobares", arg: "parapenteferrol"});
 stations.push({code: "zumaia", arg: "salvetzumaia1"});
 stations.push({code: "torreviejasetsaas", arg: "setsaas"});
@@ -37,7 +37,7 @@ function fetcher(user, timezone){
 	var deferred = new Q.defer();
 
 	lwutils.getHTML("www.weatherlink.com", "/user/" + user + "/index.php?view=summary&headers=0&type=1").then(function(html){
-		if(html.indexOf("Current Conditions") < 0) return deferred.reject();
+		if(html.indexOf("Current Conditions") < 0) return deferred.reject("No current conditions");
 
 		var ret = new Data();
 
