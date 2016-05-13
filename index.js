@@ -1,6 +1,7 @@
 var fs = require("fs");
 var stationsMonitor = require("./stationsMonitor");
-var Q = require("q")
+var Q = require("q");
+var esTz = require("timezone")(require("timezone/Europe/Madrid"));
 
 var stationToRun = process.argv[2];
 
@@ -24,17 +25,23 @@ fetchers.forEach(function(fetcher){
 				if(res === true) res = 1;
 
 				var str = "";
-				str += "00:00" + "\t";
-				str += res.temp + "\t";
-				str += res.hidro + "\t";
-				str += res.pressure + "\t";
-				str += res.wind + "\t";
-				str += res.gust + "\t";
-				str += res.dir + "\t";
-				str += res.rain;
+				function appendNumber(val){
+					str += (Math.round(val * 10) / 10) + "\t";
+				}
+				str += esTz(data.dateTime, "%H:%M", "Europe/Madrid") + "\t";
+				appendNumber(data.temp);
+				appendNumber(data.hidro);
+				appendNumber(data.pressure);
+				appendNumber(data.wind);
+				appendNumber(data.gust);
+				appendNumber(data.dir);
+				appendNumber(data.rain);
+				str += "\n";
 
 				fs.appendFile("out.txt", str, function(err){
-					console.log("Done?", err);
+					if(err){
+						console.log(err);
+					}
 				});
 			}catch(ex){
 				console.log(ex);
