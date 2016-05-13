@@ -29,11 +29,7 @@ try {
         delimiter: "\t"
       }
     }
-  ).then(function(res){
-    console.log(res);
-  }).catch(function(err){
-    console.log(err);
-  });
+  );
 }catch(ex){
 
 }
@@ -60,7 +56,7 @@ module.exports = {
 				fails: false,
 				missingLecture: false
 			}
-			return true;
+			return 1;
 		}
 
 		// If the time hasn't changed, then we are getting the same data: Do not write.
@@ -87,12 +83,16 @@ module.exports = {
 
 			return false;
 		}else{
-			var nRepeats = table[id].repetitions;
+			/*console.log(Math.abs(data.wind - table[id].data.wind), data.wind >= 1,
+				Math.abs(data.gust - table[id].data.gust),
+				Math.abs(data.dir - table[id].data.dir));*/
+
+			var nRepeats = table[id].fails ? 0 : table[id].repetitions;
 			table[id].repetitions = 0;
-			table[id].fails = true;
+			table[id].fails = false;
 			table[id].data = data;
 
-			return nRepeats ? nRepeats : true;
+			return nRepeats ? nRepeats + 1 : 1;
 		}
 	},
 	save: function(){
