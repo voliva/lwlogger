@@ -10,31 +10,31 @@ I Port de la Selva        cnps    12/11/2012      http://www.cnps.es/servimet.ph
 F Cadaqués        mrcadaques      14/6/2013       http://www.weatherlink.com/user/mrcadaques/ WeatherLink      1       42.28677        3.288174
 ? Roses   genr    3/9/2012        http://www.genroses.cat/?q=web/meteo    GEN Roses       1   42.2557369       3.179673
 #       Port Estrella   wundergr/roses  24/9/2013       http://www.meteoportestrella.es/    Meteo Port Estrella      1       42.270688       3.143896        # nou
-? Empuriabrava    empuriabrava    14/6/2013       http://www.weatherlink.com/user/trastitu/   WeatherLink      1       42.249137605719 3.1338500976562
+I Empuriabrava    empuriabrava    14/6/2013       http://www.weatherlink.com/user/trastitu/   WeatherLink      1       42.249137605719 3.1338500976562
 F St Pere Pescador        stperepescador  17/7/2013       http://www.ballena-alegre.com/  Càmping Ballena Alegre       1       42.153054       3.1122941
 I L'Escala        cnle    18/7/2012       http://www.nauticescala.com/ca/port-esportiu-a-la-costa-brava/meteo.php      CN l'Escala     0       42.1168081      3.1489992
 I Estartit        cne     3/9/2012        http://www.cnestartit.es/       CN Estartit     0   42.0539531       3.2047355
-? Palamós cncb    12/11/2012      http://www.cncostabrava.com/es/default/meteo    CN Costa Brava       1       41.842856       3.128482
+~ Palamós cncb    12/11/2012      http://www.cncostabrava.com/es/default/meteo    CN Costa Brava       1       41.842856       3.128482
 I Port d'Aro      cnpa    18/7/2012       http://www.clubnauticportdaro.cat/?page_id=1058 CN Port d'Aro        0       41.8020547      3.0641985
 F St Feliu de Guíxols     stfeliu 26/6/2013       http://www.meteoclimatic.com/   Meteoclimatic1       41.7894652      3.0288443
 F Blanes  aemet/blanes    27/12/2012      http://www.aemet.es/es/eltiempo/observacion/ultimosdatos     AEMET   1       41.6769271      2.8048923
 F Santa Susana    aemet/santasusana       27/12/2012      http://www.aemet.es/es/eltiempo/observacion/ultimosdatos     AEMET   1       41.6514987      2.6966999
 I Pineda de Mar   pinedamar       25/6/2013       http://serveis.pinedasensefils.cat/     Pinedasensefils      1       41.6245101      2.6827579
 F Canet de Mar    cvcm    20/11/2012      http://www.clubvelacanet.com/   CV Canet        1   41.5851479       2.578496
-? El Balís        cneb    4/10/2012       http://www.cnelbalis.com/meteo.asp   CN el Balis  1       41.5598564      2.5076723
+X El Balís        cneb    4/10/2012       http://www.cnelbalis.com/meteo.asp   CN el Balis  1       41.5598564      2.5076723
 # no funciona Cabrera de Mar    wundergr/cabrera        24/9/2013       http://ciezar.homeip.net/weather/wxgauge.php Meteo Cabrera   1       41.510081       2.402844        # nou
-? Vilassar de Mar cnvm    3/9/2012        http://www.cnvilassar.com/ftp/  CN Vilassar     1   41.5046941       2.3987451
-? Premià de Mar   meteopremia     25/6/2013       http://www.meteopremia.com/     Meteopremia 141.4913323      2.3667576
+X Vilassar de Mar cnvm    3/9/2012        http://www.cnvilassar.com/ftp/  CN Vilassar     1   41.5046941       2.3987451
+I Premià de Mar   meteopremia     25/6/2013       http://www.meteopremia.com/     Meteopremia 141.4913323      2.3667576
 F El Masnou       cnm     18/7/2012       http://www.nauticmasnou.com/meteo.html  CN Masnou   041.4782129      2.3175895
 F Badalona        pontpetroli     2/10/2012       http://www.pontdelpetroli.org/ultimes24.aspxPont del petroli 1       41.4401889      2.2489572
 I Barcelona       cmv     17/7/2012       http://www.velabarcelona.com/index.php/ca/el-centre-municipal-de-vela/estacio-meteo.html     Vela Barcelona  1       41.3873219      2.2026515
 F Aeroport del Prat       aemet/aeroportprat      28/12/2012      http://www.aemet.es/es/eltiempo/observacion/ultimosdatos     AEMET   1       41.2913622      2.0594859
 # Castelldefels kastaswind      4/11/2012       http://www.kastaswind.com/met/inicio.html   Kastaswind       1
-? Castelldefels   17nudos 4/7/2013        http://www.17nudos.com/index.php        17 nudos    141.2652271      1.9753933
+I Castelldefels   17nudos 4/7/2013        http://www.17nudos.com/index.php        17 nudos    141.2652271      1.9753933
 I Garraf  cng     18/7/2012       http://www.clubnauticgarraf.com/        CN Garraf       0   41.250846        1.898581
 F Sitges  cms     18/7/2012       http://clubdemardesitges.com/   CM Sitges       1       41.2328966   1.8027878
 I Port Sitges     portsitges      14/6/2013       http://www.weatherlink.com/user/portdesitges/Port de Sitges Aiguadolç        1       41.234689817826 1.8256321549416
-? Vilanova        cnv     4/11/2012       http://cnvilanova.cat/meteo/   CN Vilanova     1   41.2157489       1.7329538
+X Vilanova        cnv     4/11/2012       http://cnvilanova.cat/meteo/   CN Vilanova     1   41.2157489       1.7329538
 I Torredembarra   cmt     9/7/2012        http://cmtorredembarra.wordpress.com/   CM Torredembarra     1       41.1455455      1.4163566
 I Altafulla       cma     18/7/2012       http://www.clubmaritimaltafulla.com/    CM Altafulla141.1335629      1.3739482
 F Cambrils        metcambrils     5/10/2012       http://meteocambrils.cat/       Meteocambrils1       41.0666754      1.0603606
@@ -76,7 +76,7 @@ I La Sotonera     saih/lasotonera 05/06/2014      http://www.saihebro.com/saiheb
 I La Estanca      saih/laestanca  07/06/2014      http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E   SAIH Ebro       1       41.060284       -0.189586
 #
 # Resto
-? Marbella        marbella        27/9/2013       http://www.meteopuertobanus.es/ Meteo Puerto Banus   1       36.4875 -4.9525
+? v        marbella        27/9/2013       http://www.meteopuertobanus.es/ Meteo Puerto Banus   1       36.4875 -4.9525
 F Cádiz   cadiz   27/9/2013       http://www.tiempoencadiz.es/    Tiempo en Cádiz 1       36.542       -6.284
 F Gijón   rcar    20/11/2012      http://www.rcar.es/html/main.asp?id_mapa=12     RC Astur de Regatas  1       43.546855       -5.660341
 I Vitoria cnvi    20/11/2012      http://www.cnvitoria.com/estacion.php   CN Vitoria      1   42.94111 -2.6025

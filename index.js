@@ -19,3 +19,5 @@ fetchers.forEach(function(fetcher){
 		});
 	});
 });
+
+// Crazy fast idea: Locate+track where people go sailing in order to discover new places.
