@@ -18,7 +18,7 @@ stations.push({code:"puertos/campamento", arg: 4396});
 stations.push({code:"puertos/algeciras", arg: 3541});
 stations.push({code:"puertos/endesa", arg: 4397});
 stations.push({code:"puertos/abrigo", arg: 4391});
-stations.push({code:"puertos/exentoN", arg: 4394}); // Parada
+stations.push({code:"puertos/exentoN", arg: 4394});
 stations.push({code:"puertos/exentoS", arg: 4395}); // Parada
 stations.push({code:"puertos/carnero", arg: 4392});
 stations.push({code:"puertos/tarifa", arg: 4393});
@@ -38,7 +38,7 @@ stations.push({code:"puertos/mahoboya", arg: 2838});
 stations.push({code:"puertos/dragonera", arg: 2820});
 stations.push({code:"puertos/palos", arg: 2610});
 stations.push({code:"puertos/gata", arg: 2548});
-stations.push({code:"puertos/carneroBoya", arg: 1504});
+// Averiada stations.push({code:"puertos/carneroBoya", arg: 1504});
 stations.push({code:"puertos/cadizBoya", arg: 2342});
 stations.push({code:"puertos/langosteira", arg: 1239});
 stations.push({code:"puertos/bares", arg: 2244});

@@ -21,7 +21,16 @@ fetchers.forEach(function(fetcher){
 	fetcher.stations.forEach(function(station){
 		if(stationToRun && station.code != stationToRun) return;
 
-		var p = fetcher.fetch(station.arg).then(function(data){
+		var p = fetcher.fetch(station.arg);
+		if(station.post){
+			p = station.post(p);
+		}
+		p.then(function(data){
+			if(stationToRun){
+				// console.log(fetcher);
+				console.log(data);
+				return;
+			}
 			try {
 				var res = stationsMonitor.check(station.code, data);
 				if(!res) return;
@@ -33,7 +42,7 @@ fetchers.forEach(function(fetcher){
 				for(var i=0; i<res; i++){
 					var str = "";
 					function appendNumber(val){
-						if(!val) return str += "-\t";
+						if(typeof val == "undefined") return str += "-\t";
 						str += (Math.round(val * 10) / 10) + "\t";
 					}
 					str += esTz(time, "%H:%M", "Europe/Madrid") + "\t";
@@ -76,10 +85,12 @@ fetchers.forEach(function(fetcher){
 	});
 });
 
-Q.all(promises).then(function(){
-	stationsMonitor.save();
-}, function(err){
-	stationsMonitor.save();
-});
+if(!stationToRun){
+	Q.all(promises).then(function(){
+		stationsMonitor.save();
+	}, function(err){
+		stationsMonitor.save();
+	});
+}
 
 // Crazy fast idea: Locate+track where people go sailing in order to discover new places.

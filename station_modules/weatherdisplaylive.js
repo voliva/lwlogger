@@ -3,10 +3,9 @@ var Q = require('q');
 var Data = require("./../models/data");
 
 var stations = [];
-stations.push({code: "cne", arg: {host: "www.cnestartit.es", path: "/webphp/clientraw.txt"}});
 stations.push({code: "cnga", arg: {host: "www.cngallineras.es", path: "/meteo/clientraw.txt"}});
 stations.push({code: "rcng", arg: {host: "www.meteogandia.com", path: "/clientraw.txt"}});
-stations.push({code: "cng", arg: {host: "www.t33a.com", path: "/garraf/clientraw.txt"}});
+// Anemometre trencat stations.push({code: "cng", arg: {host: "www.t33a.com", path: "/garraf/clientraw.txt"}});
 stations.push({code: "cnle", arg: {host: "www.nauticescala.com", path: "/content/conf/clientraw.txt"}});
 stations.push({code: "marbella", arg: {host: "www.meteopuertobanus.es", path: "/clientraw.txt"}});
 stations.push({code: "cno", arg: {host: "www.cnoropesa.com", path: "/wd/clientraw.txt"}});
@@ -20,6 +19,20 @@ stations.push({code: "cnps", arg:{host: "www.cnps.cat", path:"/meteo_nova/client
 stations.push({code: "cnpa", arg:{host: "www.clubnauticportdaro.cat", path:"/meteo/clientraw.txt"}});
 stations.push({code: "pineda", arg:{host: "serveis.pinedasensefils.cat", path:"/clientraw.txt"}});
 stations.push({code: "cnga", arg:{host: "www.cngallineras.es", path:"/meteo/clientraw.txt"}});
+stations.push(
+	{
+		code: "cne",
+		arg: {host: "www.cnestartit.es",
+		path: "/webphp/clientraw.txt"
+	},
+	post: function(res){
+		return res.then(function(data){
+			if(data.temp == -10.1)
+				data.temp = null;
+			return data;
+		});
+	}
+});
 
 
 
