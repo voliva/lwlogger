@@ -38,11 +38,19 @@ St Carles de la Ràpita	meteoclimatic/stcarlesrapita	17/05/2016	http://www.meteo
 #
 # Valencia
 Oropesa del Mar cno	3/9/2012	http://www.cnoropesa.com/index.php?option=com_content&view=article&id=149%3Aimagen-de-la-bocana-en-directo&catid=51&Itemid=126	CN Oropesa	0	40.0773818	0.1332843
-# Cullera meteocullera	19/06/2013	http://meteocullera.webcindario.com/	MeteoCullera139.1628017573	-0.24566888809204
+Boya Valencia	puertos/valencia	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	39.52	0.21
+Valencia	valencia_marinareal	17/05/2016	http://www.marinarealjuancarlosi.com/	Marina Real	1	39.46243	-0.31328
+# Cullera meteocullera	19/06/2013	http://meteocullera.webcindario.com/	MeteoCullera	1	39.1628017573	-0.24566888809204
+Tavernes	tavernes	17/05/2016	http://www.meteovall.es/	MeteoVall	1	39.008783	-0.2162
+Gandia	rcng	5/9/2012	http://www.rcngandia.com/	RCN Gandia	1	38.9963738	-0.155611
 # WindOliva	windoliva	19/06/2013	http://www.windoliva.com/meteooliva/meteocurrent.php?idmen=3	WindOliva	1	38.905528	-0.066583
 Xàbia	xabia	24/9/2013	http://www.meteoxabia.com	Meteo Xabia	1	38.7967327	0.1841068
+Altea	altea	17/05/2016	http://www.cnaltea.com/	CN Altea	1	38.58829	-0.05716
+Santa Pola	santapolacabo	17/05/2016	http://www.cabodesantapola.org/	Cabo de Santa Pola	1	38.22118	-0.51579
+Torrevieja	torreviejasetsaas	17/05/2016	http://www.weatherlink.com/user/setsaas	WeatherLink	1	37.97589	-0.68178
 # Torrevieja - Acequión	mastral/acequion	5/9/2013	http://www.eltiempoentorrevieja.es/	Proyecto Mastral	1	37.980314	-0.688938	# nou
 # Torrevieja - Los Locos
+Boya palos	puertos/palos	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	37.65	-0.31
 #
 # Balears
 #
