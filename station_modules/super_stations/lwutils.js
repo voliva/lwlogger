@@ -34,7 +34,9 @@ module.exports = function(){
 	}
 	this.postHTML = function(host, path, headers, body){
 		headers = headers || {};
-		parameters = parameters || "";
+		body = body || "";
+
+		headers["Content-Length"] = body.length;
 
 		var deferred = Q.defer();
 
@@ -44,9 +46,22 @@ module.exports = function(){
 			path: path,
 			headers: headers
 		}, function(res){
-			deferred.resolve(res);
+			res.setEncoding("utf8");
+			var body = "";
+			res.on("data", function(chunk){
+				body += chunk;
+			});
+			res.on("end", function(){
+				if(res.statusCode >= 400){
+					deferred.reject({
+						status: res.statusCode,
+						body: body
+					});
+				}
+				deferred.resolve(body);
+			});
 		});
-		req.write(postData);
+		req.write(body);
 		req.end();
 
 		return deferred.promise;
@@ -54,14 +69,17 @@ module.exports = function(){
 
 	// month 1-12
 	this.getDate = function(year, month, day, hour, min, timezone){
+		timezone = timezone || "Europe/Madrid";
+
 		function to2Digit(n){
+			n = Math.floor(n);
 			if(n < 10)
 				return "0" + n;
 			return n;
 		}
 
 		var txt = year + "-" + to2Digit(month) + "-" + to2Digit(day) + " " + to2Digit(hour) + ":" + to2Digit(min);
-		if(timezone){
+		if(timezone && timezone != "UTC"){
 			var _tz = tz(require("timezone/" + timezone));
 			return new Date(_tz(txt, timezone));
 		}else{
@@ -90,6 +108,10 @@ module.exports = function(){
 	}
 
 	this.txtToDir = function(txt, i){
+		if(!txt) return null;
+
+		if(i === undefined) i = 0;
+
 		function charToDir(c){
 			if(c == 'N') return 0;
 			if(c == 'E') return 90;

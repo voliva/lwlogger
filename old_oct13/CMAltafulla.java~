@@ -1,0 +1,23 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package lwlogger;
+
+/**
+ *
+ * @author victor
+ */
+public class CMAltafulla extends DataWindStation {
+
+    @Override
+    public Dada fetch() {
+        return this.fetchFromBook("http://www.datawind.es/fcv/cma/book/php/lastdata.php");
+    }
+
+    @Override
+    public String getStationCode() {
+        return "cma";
+    }
+    
+}

@@ -1,0 +1,58 @@
+Davis:
+- He tret cadiz, que no funciona des del desembre.
+- He afegit Getxo, al costat de Bilbao. Del Real Club Marítimo del Abra.
+- He tret cadaqués, que dona dades molt erronies.
+- He afegit sa riera, a veure que tal...
+- He afegit sant antoni de calonge, que sembla bona (estació caseta SOS a la platja..)
+- He afegit l'estació del club nautic canyelles.
+- He afegit l'estació del club nautic Marina Real Juan Carlos I.
+- He afegit l'estació de Tavernes, al sud de Cullera - Nord de gandia. Tenen un formulari per demanar dades... demanar permís!
+- He afegit l'estació del cabo de santa pola.
+- He afegit l'estació de palamos platja gran
+- He afegit l'estació de altea
+- He afegit l'estació del port de malaga.
+- He afegit l'estació de cascais
+- He afegit l'estació de praia grande
+- He afegit l'estació de oporto bares
+- He afegit l'estació de zumaia
+- He afegit l'estació de torrevieja
+- He afegit l'estació de cala gamba
+- He afegit l'estació de andratx
+- He afegit l'estació de ibiza
+- He afegit l'estació de La Herradura, a veure que tal...
+- Ojo amb empuriabrava... no es molt fiable.
+- Ojo amb port de sitges... sol petar
+- He tret cullera, que em sembla que està massa lluny del mar...
+
+WeatherDisplayLive
+- Garraf torna a funcionar, que van canviar la URL.
+- Ojo amb oropesa que falla molt....
+- Port d'aro l'he deixat fora, que també falla moltíssim.
+- Pineda l'he treta perque falla massa sovint.
+- Ballena alegre la deixo posada, crec que simplement l'apagen de vacances. Comprobar-ho al 16 de maig!
+- He afegit santander, que te una estacio a la platja
+
+
+Portugal
+http://meteofonteslitoral.cm-lagoa.pt/
+
+França
+http://meteoboissoleil.c.la/
+http://www.jf-i2r.com/ (la rochelle)
+
+Per afegir ja existents:
+http://serveis.pinedasensefils.cat/
+http://www.cnelbalis.com/meteo.asp (potser ha canviat algo!)
+http://www.cnvilassar.com/ftp/
+http://www.meteopremia.com/
+http://www.velabarcelona.com ha cambiat
+http://www.17nudos.com/
+http://cnvilanova.cat/meteo/ ha cambiat
+Estacions de comunitat valenciana?
+http://meteocullera.webcindario.com/
+http://www.windoliva.com/meteooliva/
+http://www.eltiempoentorrevieja.es/
+http://cnsp.es/?page_id=2762
+http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E
+http://www.tiempoencadiz.es/
+http://www.rcar.es/html/main.asp?id_mapa=12
