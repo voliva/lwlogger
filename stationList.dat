@@ -2,9 +2,9 @@
 # Nom	Codi	Data	Web	Nom_Empresa	Ratxa[0,1]
 #
 # Catalunya
-Port de la Selva	cnps	12/11/2012	http://www.cnps.es/servimet.php CNPS	1	42.341988	3.201656
+Port de la Selva	cnps	12/11/2012	http://www.cnps.es/servimet.php	CNPS	1	42.341988	3.201656
 # Roses	genr	3/9/2012	http://www.genroses.cat/?q=web/meteo	GEN Roses	1	42.2557369	3.179673
-Empuriabrava	empuriabrava	14/6/2013	http://www.weatherlink.com/user/trastitu/	WeatherLink	1	42.249137605719 3.1338500976562
+Empuriabrava	empuriabrava	14/6/2013	http://www.weatherlink.com/user/trastitu/	WeatherLink	1	42.249137605719	3.1338500976562
 # St Pere Pescador	stperepescador	17/7/2013	http://www.ballena-alegre.com/	Càmping Ballena Alegre	1	42.153054	3.1122941
 L'Escala	cnle	18/7/2012	http://www.nauticescala.com/ca/port-esportiu-a-la-costa-brava/meteo.php	CN l'Escala	0	42.1168081	3.1489992
 Estartit	cne	3/9/2012	http://www.cnestartit.es/	CN Estartit	0	42.0539531	3.2047355
@@ -13,7 +13,7 @@ Boya Begur	puertos/begur	17/05/2016	http://www.puertos.es/es-es/oceanografia/Pag
 # Palamós cncb	12/11/2012	http://www.cncostabrava.com/es/default/meteo	CN Costa Brava	1	41.842856	3.128482
 Palamós Platja	palamosplatja	17/05/2016	http://www.weatherlink.com/user/ellado	WeatherLink	1	41.84851	3.12417
 St Antoni Calonge	stantonicalonge	17/05/2016	http://www.weatherlink.com/user/calongeplatjatv	WeatherLink	1	41.83916	3.09406
-Port d'Aro	cnpa	18/7/2012	http://www.clubnauticportdaro.cat/?page_id=1058 CN Port d'Aro	0	41.8020547	3.0641985
+Port d'Aro	cnpa	18/7/2012	http://www.clubnauticportdaro.cat/?page_id=1058	CN Port d'Aro	0	41.8020547	3.0641985
 Canyelles	canyelles	17/05/2016	http://www.cncanyelles.com/	CN Canyelles	1	41.70418	2.88048
 Pineda de Mar	pinedamar	25/6/2013	http://serveis.pinedasensefils.cat/	Pinedasensefils	1	41.6245101	2.6827579
 Calella	meteoclimatic/calella	17/05/2016	http://www.meteoclimatic.net/perfil/ESCAT0800000008370A	MeteoCalella	1	41.61416	2.66472
@@ -22,10 +22,10 @@ Premià de Mar	meteopremia	25/6/2013	http://www.meteopremia.com/	Meteopremia	1	4
 Premià Platja	meteoclimatic/premiaplatja	17/05/2016	http://cbc117.zapto.org/	Meteoclimatic	1	41.49444	2.73222
 Barcelona	cmv	17/7/2012	http://www.velabarcelona.com/index.php/ca/el-centre-municipal-de-vela/estacio-meteo.html	Vela Barcelona	1	41.3873219	2.2026515
 Barcelona ICM	meteoclimatic/barcelona	17/05/2016	http://www.icm.csic.es/	Institut de Ciències del Mar	1	41.38555	2.19555
-Castelldefels	17nudos 4/7/2013	http://www.17nudos.com/index.php	17 nudos	1	41.2652271	1.9753933
+Castelldefels	17nudos	4/7/2013	http://www.17nudos.com/index.php	17 nudos	1	41.2652271	1.9753933
 Castelldefels Baixador	meteoclimatic/castelldefels	17/05/2016	http://www.meteoclimatic.net/perfil/ESCAT0800000008860B	Meteoclimatic	1	41.26527	1.95611
 # anemometre trencat Garraf	cng	18/7/2012	http://www.clubnauticgarraf.com/	CN Garraf	0	41.250846	1.898581
-Port Sitges	portsitges	14/6/2013	http://www.portdesitges.com/	Port de Sitges Aiguadolç	1	41.234689817826 1.8256321549416
+Port Sitges	portsitges	14/6/2013	http://www.portdesitges.com/	Port de Sitges Aiguadolç	1	41.234689817826	1.8256321549416
 Vilanova	meteoclimatic/vilanova	17/05/2016	http://www.meteovilanova.info/	MeteoVilanova	1	41.22305	1.72416
 Cubelles	meteoclimatic/cubelles	17/05/2016	http://meteo.ea3hkb.com/	EA3HKB	1	41.20611	1.67722
 Torredembarra	cmt	9/7/2012	http://cmtorredembarra.wordpress.com/	CM Torredembarra	1	41.1455455	1.4163566
@@ -70,7 +70,7 @@ Ibiza Pilot	ibizapilot	17/05/2016	http://www.weatherlink.com/user/ibizapilot	Wea
 Formentera	puertos/formentera	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	38.73469	1.41896
 #
 # Andalucia
-Carboneras	puertos/carboneras	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.97531 -1.9
+Carboneras	puertos/carboneras	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.97531	-1.9
 Roldán	puertos/roldan	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.942	-1.90724
 Boya Gata	puertos/gata	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.57	-2.34
 Almeria	puertos/almeria	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.832	-2.48
@@ -91,15 +91,27 @@ Gallineras	cnga	20/11/2012	http://www.cngallineras.es/index.php/el-tiempo	CN Gal
 Boya Cadiz	puertos/cadizBoya	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.49	-6.96
 #
 # Nord
+Zumaia	zumaia	17/05/2016	http://www.weatherlink.com/user/salvetzumaia1	WeatherLink	1	43.29704	-2.25644
+Getxo	getxo	17/05/2016	http://www.rcmarsc.es/	RCMA RSC	1	43.32979	-3.01548
+Boya bilbao	puertos/bilbao	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	43.64	-3.04
+Santander	santander	17/05/2016	http://tiempo.fiochi.com/	Fiochi	1	43.4623	-3.81
+Boya Santander	puertos/santander	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	43.89	-3.78
+Gijón	puertos/gijon2	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	43.559	-5.699
+Boya Peñas	puertos/penas	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	43.75	-6.16
+Porto de Bares	oportobares	17/05/2016	http://www.clubparapenteferrol.com/	CP Ferrol	1	43.77674	-7.66721
+Boya bares	puertos/bares	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	44.12	-7.69
+Ferrol	puertos/ferrol	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	44.46201	-8.32712
+Boya Langesteira	puertos/langosteira	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	43.35	-8.56
+Vigo	puertos/vigo2	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	42.24303	-8.72614
+#
+# Conca Ebro
+Ebro	saih/ebro	05/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	42.97243	-4.05237
+Vitoria	cnvi	20/11/2012	http://www.cnvitoria.com/estacion.php	CN Vitoria	1	42.94109	-2.60264
+Alloz	saih/alloz	05/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	42.70532	-1.94391
+La Sotonera	saih/lasotonera	05/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	42.10801	-0.67044
+La Estanca	saih/laestanca	07/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	41.06178	-0.18347
 #
 # Canaries
 #
-# SAIH
-Ebro	saih/ebro	05/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	43.0206347	-3.91645849
-Alloz	saih/alloz	05/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	42.7216873	-1.9453542
-La Sotonera	saih/lasotonera 05/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	42.1107767	-0.682049
-La Estanca	saih/laestanca	07/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	41.060284	-0.189586
-#
 # Resto
-# v	marbella	27/9/2013	http://www.meteopuertobanus.es/ Meteo Puerto Banus	1	36.4875 -4.9525
-Vitoria cnvi	20/11/2012	http://www.cnvitoria.com/estacion.php	CN Vitoria	1	42.94111 -2.6025
+# v	marbella	27/9/2013	http://www.meteopuertobanus.es/ Meteo Puerto Banus	1	36.4875	-4.9525
