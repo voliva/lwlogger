@@ -10,14 +10,14 @@ stations.push({code: "cnle", arg: {host: "www.nauticescala.com", path: "/content
 stations.push({code: "marbella", arg: {host: "www.meteopuertobanus.es", path: "/clientraw.txt"}});
 stations.push({code: "cno", arg: {host: "www.cnoropesa.com", path: "/wd/clientraw.txt"}});
 stations.push({code: "santander", arg: {host: "tiempo.fiochi.com", path: "/clientraw.txt"}});
-stations.push({code: "stperepescador", arg: {host: "www.ballena-alegre.com", path: "/meteo/clientraw.txt"}});
+// stations.push({code: "stperepescador", arg: {host: "www.ballena-alegre.com", path: "/meteo/clientraw.txt"}});
 stations.push({code: "xabia", arg: {host: "www.meteoxabia.com", path: "/clientraw.txt"}});
 stations.push({code: "mallorca/portopetro", arg: {host: "www.meteodemallorca.com", path:"/portopetro/clientraw.txt"}});
 stations.push({code: "mallorca/calamillor", arg: {host: "www.meteodemallorca.com", path:"/bahia_cala_millor/clientraw.txt"}});
 stations.push({code: "mallorca/eurotel", arg: {host: "www.meteodemallorca.com", path:"/eurotel/clientraw.txt"}});
 stations.push({code: "cnps", arg:{host: "www.cnps.cat", path:"/meteo_nova/clientraw.txt"}});
 stations.push({code: "cnpa", arg:{host: "www.clubnauticportdaro.cat", path:"/meteo/clientraw.txt"}});
-stations.push({code: "pineda", arg:{host: "serveis.pinedasensefils.cat", path:"/clientraw.txt"}});
+stations.push({code: "pinedamar", arg:{host: "serveis.pinedasensefils.cat", path:"/clientraw.txt"}});
 stations.push({code: "cnga", arg:{host: "www.cngallineras.es", path:"/meteo/clientraw.txt"}});
 stations.push(
 	{

@@ -4,7 +4,7 @@ var Q = require("q");
 var mkdirp = require("mkdirp");
 var esTz = require("timezone")(require("timezone/Europe/Madrid"));
 
-var FILE_ROOT = "./www/dades"
+var FILE_ROOT = "../www/dades"
 
 var stationToRun = process.argv[2];
 
