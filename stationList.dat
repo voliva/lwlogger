@@ -70,6 +70,25 @@ Ibiza Pilot	ibizapilot	17/05/2016	http://www.weatherlink.com/user/ibizapilot	Wea
 Formentera	puertos/formentera	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	38.73469	1.41896
 #
 # Andalucia
+Carboneras	puertos/carboneras	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.97531 -1.9
+Roldán	puertos/roldan	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.942	-1.90724
+Boya Gata	puertos/gata	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.57	-2.34
+Almeria	puertos/almeria	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.832	-2.48
+Almeria 2	puertos/almeria2	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.83024	-2.47827
+Herradura	herradura	17/05/2016	http://www.marinasmediterraneo.com/	Marinas del Mediterráneo	36.72416	-3.73487
+Málaga	malaga	17/05/2016	http://www.weatherlink.com/user/tds	WeatherLink	1	36.70682	-4.42521
+Puerto Banus	marbella	17/05/2016	http://www.meteopuertobanus.es/	Meteo Puerto Banus	36.4898	-4.94905
+Campamento	puertos/campamento	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.17224	-5.38111
+Algeciras	puertos/algeciras	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.177727	-5.39806
+Endesa	puertos/endesa	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.17335	-5.41977
+Abrigo	puertos/abrigo	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.13621	-5.43033
+Exento Norte	puertos/exentoN	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.13572	-5.41703
+Exento Sur	puertos/exentoS	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.1186	-5.41634
+Punta Carnero	puertos/carnero	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.0774	-5.42724
+Tarifa	puertos/tarifa	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.01043	-5.60244
+Tarifa Dique	puertos/tarifaDique	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.00816	-5.60116
+Gallineras	cnga	20/11/2012	http://www.cngallineras.es/index.php/el-tiempo	CN Gallineras	0	36.440151	-6.207134
+Boya Cadiz	puertos/cadizBoya	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.49	-6.96
 #
 # Nord
 #
@@ -84,4 +103,3 @@ La Estanca	saih/laestanca	07/06/2014	http://www.saihebro.com/saihebro/index.php?
 # Resto
 # v	marbella	27/9/2013	http://www.meteopuertobanus.es/ Meteo Puerto Banus	1	36.4875 -4.9525
 Vitoria cnvi	20/11/2012	http://www.cnvitoria.com/estacion.php	CN Vitoria	1	42.94111 -2.6025
-Gallineras	cnga	20/11/2012	http://www.cngallineras.es/index.php/el-tiempo	CN Gallineras	0	36.440151	-6.207134
