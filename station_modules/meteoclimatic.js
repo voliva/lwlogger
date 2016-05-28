@@ -15,7 +15,7 @@ stations.push({code: "meteoclimatic/premiaplatja", arg: {region: "ESCAT", code: 
 stations.push({code: "meteoclimatic/mataro", arg: {region: "ESCAT", code: "ESCAT0800000008301F"}});
 stations.push({code: "meteoclimatic/calella", arg: {region: "ESCAT", code: "ESCAT0800000008370A"}});
 stations.push({code: "meteoclimatic/ciutadellamenorca", arg: {region: "ESIBA", code: "ESIBA0700000307760A"}});
-stations.push({code: "meteoclimatic/staEulaliaRio", arg: {region: "ESIBA", code: "ESIBA0700000207840A"}})
+stations.push({code: "meteoclimatic/staeulaliario", arg: {region: "ESIBA", code: "ESIBA0700000207840A"}})
 
 // premia cabrera mataro canet calella
 // TODO Awekas: (premià http://www.awekas.at/es/instrument.php?id=12238)

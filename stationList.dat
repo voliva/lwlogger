@@ -25,7 +25,7 @@ Barcelona ICM	meteoclimatic/barcelona	17/05/2016	http://www.icm.csic.es/	Institu
 Castelldefels	17nudos 4/7/2013	http://www.17nudos.com/index.php	17 nudos	1	41.2652271	1.9753933
 Castelldefels Baixador	meteoclimatic/castelldefels	17/05/2016	http://www.meteoclimatic.net/perfil/ESCAT0800000008860B	Meteoclimatic	1	41.26527	1.95611
 # anemometre trencat Garraf	cng	18/7/2012	http://www.clubnauticgarraf.com/	CN Garraf	0	41.250846	1.898581
-Port Sitges	portsitges	14/6/2013	http://www.weatherlink.com/user/portdesitges/Port de Sitges Aiguadolç	1	41.234689817826 1.8256321549416
+Port Sitges	portsitges	14/6/2013	http://www.portdesitges.com/	Port de Sitges Aiguadolç	1	41.234689817826 1.8256321549416
 Vilanova	meteoclimatic/vilanova	17/05/2016	http://www.meteovilanova.info/	MeteoVilanova	1	41.22305	1.72416
 Cubelles	meteoclimatic/cubelles	17/05/2016	http://meteo.ea3hkb.com/	EA3HKB	1	41.20611	1.67722
 Torredembarra	cmt	9/7/2012	http://cmtorredembarra.wordpress.com/	CM Torredembarra	1	41.1455455	1.4163566
@@ -53,6 +53,27 @@ Torrevieja	torreviejasetsaas	17/05/2016	http://www.weatherlink.com/user/setsaas	
 Boya palos	puertos/palos	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	37.65	-0.31
 #
 # Balears
+Ciutadella	meteoclimatic/ciutadellamenorca	17/05/2016	http://www.meteoclimatic.net/perfil/ESIBA0700000307760A	Meteoclimatic	1	39.99472	3.83361
+Mahón	puertos/maho	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	39.89314	4.27037
+Boya Mahón	puertos/mahoboya	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	39.71	4.42
+Alcudia	puertos/alcudia	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	39.83472	3.13908
+Es Rajoli	mallorca/eurotel	17/05/2016	http://www.meteodemallorca.com/	Meteo de Mallorca	1	39.63582	3.41443
+Cala Millor	mallorca/calamillor	17/05/2016	http://www.meteodemallorca.com/	Meteo de Mallorca	1	39.59952	3.38471
+Portopetro	mallorca/portopetro	17/05/2016	http://www.meteodemallorca.com/	Meteo de Mallorca	1	39.36111	3.321033
+Cala Gamba	cncg	17/05/2016	17/05/2016	http://www.cncg.es/	CN Cala Gamba	1	39.54654	2.69422
+Palma	puertos/palmamall	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	39.56024	2.63744
+Andratx	cvpa	3/10/2012	http://www.cvpa.es/	CV Puerto de Andratx	1	39.54581	2.38317
+Boya dragonera	puertos/dragonera	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	39.55	2.10
+Santa Eulalia des Riu	meteoclimatic/staeulaliario	17/05/2016	http://www.meteoclimatic.net/perfil/ESIBA0700000207840A	Meteoclimatic	1	38.98472	1.53388
+Ibiza Puerto	puertos/ibiza	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	38.91143	1.4495
+Ibiza Pilot	ibizapilot	17/05/2016	http://www.weatherlink.com/user/ibizapilot	WeatherLink	1	38.90332	1.44749
+Formentera	puertos/formentera	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	38.73469	1.41896
+#
+# Andalucia
+#
+# Nord
+#
+# Canaries
 #
 # SAIH
 Ebro	saih/ebro	05/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	43.0206347	-3.91645849

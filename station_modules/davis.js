@@ -25,7 +25,7 @@ stations.push({code: "zumaia", arg: "salvetzumaia1"});
 stations.push({code: "torreviejasetsaas", arg: "setsaas"});
 stations.push({code: "Cala Gamba", arg: "cncg"});
 stations.push({code: "andratx", arg: "tinin30"});
-stations.push({code: "Ibiza", arg: "ibizapilot"});
+stations.push({code: "ibizapilot", arg: "ibizapilot"});
 stations.push({code: "empuriabrava", arg: "trastitu", post: function(res){
   return res.then(function(data){
     data.dir = Math.floor(data.dir + 180) % 360;
