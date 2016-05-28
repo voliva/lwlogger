@@ -9,6 +9,7 @@ Empuriabrava	empuriabrava	14/6/2013	http://www.weatherlink.com/user/trastitu/	We
 L'Escala	cnle	18/7/2012	http://www.nauticescala.com/ca/port-esportiu-a-la-costa-brava/meteo.php	CN l'Escala	0	42.1168081	3.1489992
 Estartit	cne	3/9/2012	http://www.cnestartit.es/	CN Estartit	0	42.0539531	3.2047355
 Sa Riera	sariera	17/05/2016	http://www.weatherlink.com/user/pverhoeven	WeatherLink	1	41.9733	3.21465
+Boya Begur	puertos/begur	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	41.91	3.65
 # Palamós cncb	12/11/2012	http://www.cncostabrava.com/es/default/meteo	CN Costa Brava	1	41.842856	3.128482
 Palamós Platja	palamosplatja	17/05/2016	http://www.weatherlink.com/user/ellado	WeatherLink	1	41.84851	3.12417
 St Antoni Calonge	stantonicalonge	17/05/2016	http://www.weatherlink.com/user/calongeplatjatv	WeatherLink	1	41.83916	3.09406
@@ -29,6 +30,11 @@ Vilanova	meteoclimatic/vilanova	17/05/2016	http://www.meteovilanova.info/	MeteoV
 Cubelles	meteoclimatic/cubelles	17/05/2016	http://meteo.ea3hkb.com/	EA3HKB	1	41.20611	1.67722
 Torredembarra	cmt	9/7/2012	http://cmtorredembarra.wordpress.com/	CM Torredembarra	1	41.1455455	1.4163566
 Altafulla	cma	18/7/2012	http://www.clubmaritimaltafulla.com/	CM Altafulla	1	41.1335629	1.3739482
+Tarragona	puertos/tarragona	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	41.07909	1.21295
+Miami Platja	meteoclimatic/miamiplatja	17/05/2016	http://www.meteoclimatic.net/perfil/ESCAT4300000043892C	Meteoclimatic	1	41.00194	0.92972
+Hospitalet vandellós	meteoclimatic/hospitalet	17/05/2016	http://www.meteoclimatic.net/perfil/ESCAT4300000043890A	Meteoclimatic	1	40.99249	0.92277
+Boya tarragona	puertos/tarrboya	17/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	40.69	1.47
+St Carles de la Ràpita	meteoclimatic/stcarlesrapita	17/05/2016	http://www.meteoclimatic.net/perfil/ESCAT4300000043540A	Meteoclimatic	1	40.62249	0.59249
 #
 # Valencia
 Oropesa del Mar cno	3/9/2012	http://www.cnoropesa.com/index.php?option=com_content&view=article&id=149%3Aimagen-de-la-bocana-en-directo&catid=51&Itemid=126	CN Oropesa	0	40.0773818	0.1332843
