@@ -19,7 +19,7 @@ Pineda de Mar	pinedamar	25/6/2013	http://serveis.pinedasensefils.cat/	Pinedasens
 Calella	meteoclimatic/calella	28/05/2016	http://www.meteoclimatic.net/perfil/ESCAT0800000008370A	MeteoCalella	1	41.61416	2.66472
 Mataró	meteoclimatic/mataro	28/05/2016	http://www.portmataro.org/	Port Mataro	1	41.53027	2.44861
 Premià de Mar	meteopremia	25/6/2013	http://www.meteopremia.com/	Meteopremia	1	41.4913323	2.3667576
-Premià Platja	meteoclimatic/premiaplatja	28/05/2016	http://cbc117.zapto.org/	Meteoclimatic	1	41.49444	2.73222
+Premià Platja	meteoclimatic/premiaplatja	28/05/2016	http://cbc117.zapto.org/	Meteoclimatic	1	41.49444	2.37222
 Barcelona	cmv	17/7/2012	http://www.velabarcelona.com/index.php/ca/el-centre-municipal-de-vela/estacio-meteo.html	Vela Barcelona	1	41.3873219	2.2026515
 Barcelona ICM	meteoclimatic/barcelona	28/05/2016	http://www.icm.csic.es/	Institut de Ciències del Mar	1	41.38555	2.19555
 Castelldefels	17nudos	4/7/2013	http://www.17nudos.com/index.php	17 nudos	1	41.2652271	1.9753933
@@ -37,7 +37,7 @@ Boya tarragona	puertos/tarrboya	28/05/2016	http://www.puertos.es/es-es/oceanogra
 St Carles de la Ràpita	meteoclimatic/stcarlesrapita	28/05/2016	http://www.meteoclimatic.net/perfil/ESCAT4300000043540A	Meteoclimatic	1	40.62249	0.59249
 #
 # Valencia
-Oropesa del Mar cno	3/9/2012	http://www.cnoropesa.com/index.php?option=com_content&view=article&id=149%3Aimagen-de-la-bocana-en-directo&catid=51&Itemid=126	CN Oropesa	0	40.0773818	0.1332843
+Oropesa del Mar	cno	3/9/2012	http://www.cnoropesa.com/index.php?option=com_content&view=article&id=149%3Aimagen-de-la-bocana-en-directo&catid=51&Itemid=126	CN Oropesa	0	40.0773818	0.1332843
 Boya Valencia	puertos/valencia	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	39.52	0.21
 Valencia	valencia_marinareal	28/05/2016	http://www.marinarealjuancarlosi.com/	Marina Real	1	39.46243	-0.31328
 # Cullera meteocullera	19/06/2013	http://meteocullera.webcindario.com/	MeteoCullera	1	39.1628017573	-0.24566888809204
@@ -75,9 +75,9 @@ Roldán	puertos/roldan	28/05/2016	http://www.puertos.es/es-es/oceanografia/Pagin
 Boya Gata	puertos/gata	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.57	-2.34
 Almeria	puertos/almeria	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.832	-2.48
 Almeria 2	puertos/almeria2	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.83024	-2.47827
-Herradura	herradura	28/05/2016	http://www.marinasmediterraneo.com/	Marinas del Mediterráneo	36.72416	-3.73487
+Herradura	herradura	28/05/2016	http://www.marinasmediterraneo.com/	Marinas del Mediterráneo	1	36.72416	-3.73487
 Málaga	malaga	28/05/2016	http://www.weatherlink.com/user/tds	WeatherLink	1	36.70682	-4.42521
-Puerto Banus	marbella	28/05/2016	http://www.meteopuertobanus.es/	Meteo Puerto Banus	36.4898	-4.94905
+Puerto Banus	marbella	28/05/2016	http://www.meteopuertobanus.es/	Meteo Puerto Banus	1	36.4898	-4.94905
 Campamento	puertos/campamento	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.17224	-5.38111
 Algeciras	puertos/algeciras	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.177727	-5.39806
 Endesa	puertos/endesa	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	36.17335	-5.41977
@@ -112,11 +112,11 @@ La Sotonera	saih/lasotonera	05/06/2014	http://www.saihebro.com/saihebro/index.ph
 La Estanca	saih/laestanca	07/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	41.06178	-0.18347
 #
 # Canaries
-Las Palmas	puertos/lanzarote	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	29.97225	-13.53
-Las Palmas	puertos/fuerteventura	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	28.49313	-13.85839
+Lanzarote	puertos/lanzarote	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	29.97225	-13.53
+Fuerteventura	puertos/fuerteventura	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	28.49313	-13.85839
 Las Palmas	puertos/laspalmas	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	28.14087	-15.41175
-Las Palmas	puertos/grancanaria	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	28.19	-15.80
-Las Palmas	puertos/tenerifeS	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	28.00	-16.60
+Boya Gran Canaria	puertos/grancanaria	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	28.19	-15.80
+Boya Tenerife	puertos/tenerifeS	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/portus.aspx	Puertos de España	1	28.00	-16.60
 #
 # Resto
 # v	marbella	27/9/2013	http://www.meteopuertobanus.es/ Meteo Puerto Banus	1	36.4875	-4.9525
