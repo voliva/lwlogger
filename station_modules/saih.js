@@ -8,6 +8,7 @@ stations.push({code:"saih/ebro", arg: "EM01"});
 stations.push({code:"saih/alloz", arg: "EM30"});
 stations.push({code:"saih/lasotonera", arg: "EM38"});
 stations.push({code:"saih/laestanca", arg: "EM19"});
+stations.push({code:"saih/laloteta", arg: "E085"});
 
 
 function fetcher(id){
