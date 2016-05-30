@@ -1,4 +1,4 @@
-20 # Version
+21 # Version
 # Nom	Codi	Data	Web	Nom_Empresa	Ratxa[0,1]
 #
 # Catalunya
@@ -108,6 +108,7 @@ Vigo	puertos/vigo2	28/05/2016	http://www.puertos.es/es-es/oceanografia/Paginas/p
 Ebro	saih/ebro	05/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	42.97243	-4.05237
 Vitoria	cnvi	20/11/2012	http://www.cnvitoria.com/estacion.php	CN Vitoria	1	42.94109	-2.60264
 Alloz	saih/alloz	05/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	42.70532	-1.94391
+La Loteta	saih/laloteta	07/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	41.82563	-1.32556
 La Sotonera	saih/lasotonera	05/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	42.10801	-0.67044
 La Estanca	saih/laestanca	07/06/2014	http://www.saihebro.com/saihebro/index.php?url=/datos/mapas/tipoestacion:E	SAIH Ebro	1	41.06178	-0.18347
 #
