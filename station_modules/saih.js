@@ -69,12 +69,12 @@ function fetcher(id){
        var timeRegex = /^([0-9]{2})\/([0-9]{2})\/([0-9]{4}) ([0-9]{2}):([0-9]{2})$/;
        var timeMatch = timeRegex.exec(match[1]);
        if(timeMatch){
-         ret.dateTime = new Date(
-           timeMatch[3] + "-" +
-           timeMatch[2] + "-" +
-           timeMatch[1] + "T" +
-           timeMatch[4] + ":" +
-           timeMatch[5] + ":00Z"
+         ret.dateTime = lwutils.getDate(
+           parseInt(timeMatch[3]),
+           parseInt(timeMatch[2]),
+           parseInt(timeMatch[1]),
+           parseInt(timeMatch[4]),
+           parseInt(timeMatch[5])
          );
        }
 
