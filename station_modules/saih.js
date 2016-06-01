@@ -6,9 +6,16 @@ var stations = [];
 // Good quality: 5-10 min
 stations.push({code:"saih/ebro", arg: "EM01"});
 stations.push({code:"saih/alloz", arg: "EM30"});
-stations.push({code:"saih/lasotonera", arg: "EM38"});
 stations.push({code:"saih/laestanca", arg: "EM19"});
 stations.push({code:"saih/laloteta", arg: "E085"});
+stations.push({code:"saih/lasotonera", arg: "EM38",
+	post: function(res){
+		return res.then(function(data){
+			data.dir = 360 - data.dir;
+			return data;
+		});
+	}
+});
 
 function format(date){
 	var m = date.getMonth() + 1;
