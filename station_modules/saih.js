@@ -29,12 +29,12 @@ postData = postData.replace("{fecha_fin}", format(now));
 
 function fetcher(id){
 	if(!loginPromise){
-		console.log("promise");
 		loginPromise = lwutils.postHTML(
 			"www.saihebro.com",
 			"/saihebro/index.php?url=/usuarios/validarLogin",
 			{
-				"Content-Type": "application/x-www-form-urlencoded"
+				"Content-Type": "application/x-www-form-urlencoded",
+				"Cookie": `PHPSESSID=${process.env.SAIH_COOKIE}; lang=es`
 			},
 			`data%5Blogin%5D%5Bnombreusuario%5D=${process.env.SAIH_USER}&data%5Blogin%5D%5Bpassword%5D=${process.env.SAIH_PASSWORD}&data%5Blogin%5D%5Brecordar%5D=1&data%5Blogin%5D%5Brecordar%5D=1`
 		);
@@ -46,10 +46,12 @@ function fetcher(id){
 	    "www.saihebro.com",
 	    "/saihebro/index.php?url=/datos/ficha/estacion:" + id,
 	    {
-	      "Accept-Language": "es"
+	      "Accept-Language": "es",
+			"Cookie": `PHPSESSID=${process.env.SAIH_COOKIE}; lang=es`
 	    }
 	  )
 	}).then(function(html){
+		console.log(html);
      html = new (lwutils.splitter)(html)
        .cropToStrEx("Datos anal")
        .getToStrEx("</table>")
