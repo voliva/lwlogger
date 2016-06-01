@@ -51,7 +51,6 @@ function fetcher(id){
 	    }
 	  )
 	}).then(function(html){
-		console.log(html);
      html = new (lwutils.splitter)(html)
        .cropToStrEx("Datos anal")
        .getToStrEx("</table>")
