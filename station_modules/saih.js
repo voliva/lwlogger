@@ -10,9 +10,73 @@ stations.push({code:"saih/lasotonera", arg: "EM38"});
 stations.push({code:"saih/laestanca", arg: "EM19"});
 stations.push({code:"saih/laloteta", arg: "E085"});
 
+function format(date){
+	var m = date.getMonth() + 1;
+	var d = date.getDate();
+
+	return date.getFullYear() + "-" +
+		(m < 10 ? "0" + m : m) + "-" +
+		(d < 10 ? "0" + d : d);
+}
+
+var loginPromise = null;
+var postData = "tags%5B{i}%5D%5Btag%5D={tag}&tags%5B{i}%5D%5Bver%5D=S&tags%5B{i}%5D%5Bintervalo_15m%5D=1&tags%5B{i}%5D%5Bfecha_ini%5D={fecha_ini}-00-00&tags%5B{i}%5D%5Bfecha_fin%5D={fecha_fin}-00-00";
+
+var now = new Date();
+postData = postData.replace("{fecha_ini}", format(now));
+now.setDate(now.getDate() + 1);
+postData = postData.replace("{fecha_fin}", format(now));
 
 function fetcher(id){
-	return lwutils.getHTML(
+	if(!loginPromise){
+		console.log("promise");
+		loginPromise = lwutils.postHTML(
+			"www.saihebro.com",
+			"/saihebro/index.php?url=/usuarios/validarLogin",
+			{},
+			`data%5Blogin%5D%5Bnombreusuario%5D=${process.env.SAIH_USER}&data%5Blogin%5D%5Bpassword%5D=${process.env.SAIH_PASSWORD}&data%5Blogin%5D%5Brecordar%5D=1&data%5Blogin%5D%5Brecordar%5D=1`
+		);
+	}
+
+
+	return loginPromise.then(function(html){
+	}).catch(function(html){
+		// TODO for some reason, login fails with a 500
+
+		// http://stackoverflow.com/questions/1144783/replacing-all-occurrences-of-a-string-in-javascript
+		String.prototype.replaceAll = function(search, replacement) {
+			var target = this;
+			return target.split(search).join(replacement);
+		};
+
+		var params =
+			postData
+				.replaceAll("{tag}", "EM38H05VVIEN")
+				.replaceAll("{i}", 0) + "&" +
+			postData
+					.replaceAll("{tag}", "EM38H08VMVIE")
+					.replaceAll("{i}", 1) + "&" +
+			postData
+					.replaceAll("{tag}", "EM38H06DVIEN")
+					.replaceAll("{i}", 2);
+		String.prototype.replaceAll = undefined;
+
+		console.log(params);
+
+		return lwutils.postHTML(
+			"www.saihebro.com",
+			"/saihebro/views/elements/graficas/ajax.php?url=/sedh/ajax_datos_graficas",
+			{},
+			params
+		);
+	}).then(function(res){
+		console.log("RES", res);
+	}, function(err){
+		console.log("ERR", err);
+	});
+
+
+	/*return lwutils.getHTML(
     "www.saihebro.com",
     "/saihebro/index.php?url=/datos/ficha/estacion:" + id,
     {
@@ -116,7 +180,7 @@ function fetcher(id){
     return ret;
 	}, function(err){
     console.log("Err", err);
-  });
+ });*/
 }
 
 module.exports = {
