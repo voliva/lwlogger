@@ -33,154 +33,122 @@ function fetcher(id){
 		loginPromise = lwutils.postHTML(
 			"www.saihebro.com",
 			"/saihebro/index.php?url=/usuarios/validarLogin",
-			{},
+			{
+				"Content-Type": "application/x-www-form-urlencoded"
+			},
 			`data%5Blogin%5D%5Bnombreusuario%5D=${process.env.SAIH_USER}&data%5Blogin%5D%5Bpassword%5D=${process.env.SAIH_PASSWORD}&data%5Blogin%5D%5Brecordar%5D=1&data%5Blogin%5D%5Brecordar%5D=1`
 		);
 	}
 
 
 	return loginPromise.then(function(html){
-	}).catch(function(html){
-		// TODO for some reason, login fails with a 500
+		return lwutils.getHTML(
+	    "www.saihebro.com",
+	    "/saihebro/index.php?url=/datos/ficha/estacion:" + id,
+	    {
+	      "Accept-Language": "es"
+	    }
+	  )
+	}).then(function(html){
+     html = new (lwutils.splitter)(html)
+       .cropToStrEx("Datos anal")
+       .getToStrEx("</table>")
+       .getString();
 
-		// http://stackoverflow.com/questions/1144783/replacing-all-occurrences-of-a-string-in-javascript
-		String.prototype.replaceAll = function(search, replacement) {
-			var target = this;
-			return target.split(search).join(replacement);
-		};
+     var ret = new Data();
 
-		var params =
-			postData
-				.replaceAll("{tag}", "EM38H05VVIEN")
-				.replaceAll("{i}", 0) + "&" +
-			postData
-					.replaceAll("{tag}", "EM38H08VMVIE")
-					.replaceAll("{i}", 1) + "&" +
-			postData
-					.replaceAll("{tag}", "EM38H06DVIEN")
-					.replaceAll("{i}", 2);
-		String.prototype.replaceAll = undefined;
+     var wind = new (lwutils.splitter)(html)
+       .cropToStrEx("VELOCIDAD VIENTO")
+       .getToStrEx("</tr>")
+       .getString()
+       .replace(/\r?\n|\r/g, "");
 
-		console.log(params);
+     var match = />([0-9\/ :]+)<\/td.+?celdac\">([0-9,]+)<\/td/.exec(wind);
+     if(match){
+       var timeRegex = /^([0-9]{2})\/([0-9]{2})\/([0-9]{4}) ([0-9]{2}):([0-9]{2})$/;
+       var timeMatch = timeRegex.exec(match[1]);
+       if(timeMatch){
+         ret.dateTime = new Date(
+           timeMatch[3] + "-" +
+           timeMatch[2] + "-" +
+           timeMatch[1] + "T" +
+           timeMatch[4] + ":" +
+           timeMatch[5] + ":00Z"
+         );
+       }
 
-		return lwutils.postHTML(
-			"www.saihebro.com",
-			"/saihebro/views/elements/graficas/ajax.php?url=/sedh/ajax_datos_graficas",
-			{},
-			params
-		);
-	}).then(function(res){
-		console.log("RES", res);
-	}, function(err){
-		console.log("ERR", err);
-	});
+       ret.wind = lwutils.mpsToKnots(parseFloat(match[2].replace(",", ".")));
+     }
 
+     var temp = new (lwutils.splitter)(html)
+       .cropToStrEx("TEMPERATURA AMB.")
+       .getToStrEx("</tr>")
+       .getString()
+       .replace(/\r?\n|\r/g, "");
+     match = />([0-9,]+)<\/td/.exec(temp);
+     if(match){
+       ret.temp = parseFloat(match[1].replace(",", "."));
+     }
 
-	/*return lwutils.getHTML(
-    "www.saihebro.com",
-    "/saihebro/index.php?url=/datos/ficha/estacion:" + id,
-    {
-      "Accept-Language": "es"
-    }
-  ).then(function(html){
-    html = new (lwutils.splitter)(html)
-      .cropToStrEx("Datos anal")
-      .getToStrEx("</table>")
-      .getString();
+     var gust = new (lwutils.splitter)(html)
+       .cropToStrEx("VELOC.RACHA")
+       .getToStrEx("</tr>")
+       .getString()
+       .replace(/\r?\n|\r/g, "");
+     match = />([0-9,]+)<\/td/.exec(gust);
+     if(match){
+       ret.gust = lwutils.mpsToKnots(parseFloat(match[1].replace(",", ".")));
+     }
 
-    var ret = new Data();
+     var dir = new (lwutils.splitter)(html)
+       .cropToStrEx("DIRECCI")
+       .getToStrEx("</tr>")
+       .getString()
+       .replace(/\r?\n|\r/g, "");
+     match = />([0-9,]+)<\/td/.exec(dir);
+     if(match){
+       ret.dir = parseFloat(match[1].replace(",", "."));
+     }
 
-    var wind = new (lwutils.splitter)(html)
-      .cropToStrEx("VELOCIDAD VIENTO")
-      .getToStrEx("</tr>")
-      .getString()
-      .replace(/\r?\n|\r/g, "");
+     var rain = new (lwutils.splitter)(html)
+       .cropToStrEx("PRECIP. HORARIA")
+       .getToStrEx("</tr>")
+       .getString()
+       .replace(/\r?\n|\r/g, "");
+     match = />([0-9,]+)<\/td/.exec(rain);
+     if(match){
+       ret.rain = parseFloat(match[1].replace(",", "."));
+     }
 
-    var match = />([0-9\/ :]+)<\/td.+?celdac\">([0-9,]+)<\/td/.exec(wind);
-    if(match){
-      var timeRegex = /^([0-9]{2})\/([0-9]{2})\/([0-9]{4}) ([0-9]{2}):([0-9]{2})$/;
-      var timeMatch = timeRegex.exec(match[1]);
-      if(timeMatch){
-        ret.dateTime = new Date(
-          timeMatch[3] + "-" +
-          timeMatch[2] + "-" +
-          timeMatch[1] + "T" +
-          timeMatch[4] + ":" +
-          timeMatch[5] + ":00Z"
-        );
-      }
+     var hum = new (lwutils.splitter)(html)
+       .cropToStrEx("HUMEDAD RELAT")
+       .getToStrEx("</tr>")
+       .getString()
+       .replace(/\r?\n|\r/g, "");
+     match = />([0-9,]+)<\/td/.exec(hum);
+     if(match){
+       ret.hidro = parseFloat(match[1].replace(",", "."));
+     }
 
-      ret.wind = lwutils.mpsToKnots(parseFloat(match[2].replace(",", ".")));
-    }
+     var pressure = new (lwutils.splitter)(html)
+       .cropToStrEx("PRESION NIVEL DEL MAR")
+       .getToStrEx("</tr>")
+       .getString()
+       .replace(/\r?\n|\r/g, "");
+     match = />([0-9,.]+)<\/td/.exec(pressure);
+     if(match){
+       ret.pressure = parseFloat(
+ 				match[1]
+ 					.replace(".", "")
+ 					.replace(",", ".")
+ 			);
+     }
 
-    var temp = new (lwutils.splitter)(html)
-      .cropToStrEx("TEMPERATURA AMB.")
-      .getToStrEx("</tr>")
-      .getString()
-      .replace(/\r?\n|\r/g, "");
-    match = />([0-9,]+)<\/td/.exec(temp);
-    if(match){
-      ret.temp = parseFloat(match[1].replace(",", "."));
-    }
+     return ret;
+ 	}, function(err){
+     console.log("Err", err);
+  });;
 
-    var gust = new (lwutils.splitter)(html)
-      .cropToStrEx("VELOC.RACHA")
-      .getToStrEx("</tr>")
-      .getString()
-      .replace(/\r?\n|\r/g, "");
-    match = />([0-9,]+)<\/td/.exec(gust);
-    if(match){
-      ret.gust = lwutils.mpsToKnots(parseFloat(match[1].replace(",", ".")));
-    }
-
-    var dir = new (lwutils.splitter)(html)
-      .cropToStrEx("DIRECCI")
-      .getToStrEx("</tr>")
-      .getString()
-      .replace(/\r?\n|\r/g, "");
-    match = />([0-9,]+)<\/td/.exec(dir);
-    if(match){
-      ret.dir = parseFloat(match[1].replace(",", "."));
-    }
-
-    var rain = new (lwutils.splitter)(html)
-      .cropToStrEx("PRECIP. HORARIA")
-      .getToStrEx("</tr>")
-      .getString()
-      .replace(/\r?\n|\r/g, "");
-    match = />([0-9,]+)<\/td/.exec(rain);
-    if(match){
-      ret.rain = parseFloat(match[1].replace(",", "."));
-    }
-
-    var hum = new (lwutils.splitter)(html)
-      .cropToStrEx("HUMEDAD RELAT")
-      .getToStrEx("</tr>")
-      .getString()
-      .replace(/\r?\n|\r/g, "");
-    match = />([0-9,]+)<\/td/.exec(hum);
-    if(match){
-      ret.hidro = parseFloat(match[1].replace(",", "."));
-    }
-
-    var pressure = new (lwutils.splitter)(html)
-      .cropToStrEx("PRESION NIVEL DEL MAR")
-      .getToStrEx("</tr>")
-      .getString()
-      .replace(/\r?\n|\r/g, "");
-    match = />([0-9,.]+)<\/td/.exec(pressure);
-    if(match){
-      ret.pressure = parseFloat(
-				match[1]
-					.replace(".", "")
-					.replace(",", ".")
-			);
-    }
-
-    return ret;
-	}, function(err){
-    console.log("Err", err);
- });*/
 }
 
 module.exports = {
