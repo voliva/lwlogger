@@ -51,7 +51,7 @@ fetchers.forEach(function(fetcher){
 					appendNumber(data.pressure);
 					appendNumber(data.wind);
 					appendNumber(data.gust);
-					appendNumber(data.dir);
+					appendNumber(Math.round(data.dir));
 					appendNumber(data.rain);
 					str += "\n";
 
