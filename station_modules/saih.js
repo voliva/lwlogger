@@ -98,8 +98,11 @@ function fetcher(id){
        ret.temp = parseFloat(match[1].replace(",", "."));
      }
 
+     var token = "RACHA";
+     if(html.indexOf(token) < 0)
+        console.log("Gust not detected for station " + id); // TODO Error handling
      var gust = new (lwutils.splitter)(html)
-       .cropToStrEx("VELOC.RACHA")
+       .cropToStrEx(token)
        .getToStrEx("</tr>")
        .getString()
        .replace(/\r?\n|\r/g, "");
