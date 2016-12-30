@@ -39,7 +39,6 @@ module.exports = function(){
 		headers["Content-Length"] = body.length;
 
 		var deferred = Q.defer();
-
 		var req = http.request({
 			hostname: host,
 			method: "POST",
@@ -60,6 +59,8 @@ module.exports = function(){
 				}
 				deferred.resolve(body);
 			});
+		}).on("error", function(err){
+			deferred.reject(err);
 		});
 		req.write(body);
 		req.end();
