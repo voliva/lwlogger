@@ -1,14 +1,15 @@
 var Q = require('q');
 var http = require("http");
+var https = require("https");
 var tz = require("timezone");
 
 module.exports = function(){
-	this.getHTML = function(host, path, headers){
+	this.getHTML = function(host, path, headers, useHttps){
 		headers = headers || {};
 
 		var deferred = Q.defer();
 
-		http.request({
+		(useHttps ? https : http).request({
 			hostname: host,
 			method: "GET",
 			path: path,
