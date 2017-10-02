@@ -1,5 +1,4 @@
 var lwutils = new (require("./super_stations/lwutils"))();
-var Q = require('q');
 var Data = require("./../models/data");
 
 var stations = [];
@@ -23,22 +22,23 @@ stations.push({code: "meteoclimatic/staeulaliario", arg: {region: "ESIBA", code:
 
 var MCData = {};
 function getMCData(region){
-  var deferred = new Q.defer();
+  if(MCData[region]) return MCData[region];
 
   // Assuming 1 thread!
-  if(MCData[region]) return MCData[region];
-  MCData[region] = deferred.promise;
-
-	lwutils.getHTML("www.meteoclimatic.net", "/mapinfo/" + region, {
-    "Accept-Language": "ca-ES"
-  }, true).then(function(html){
-    deferred.resolve(new (lwutils.splitter)(html)
-      .cropToStrEx("<!-- Calendarii -->")
-      .getToStrEx(`<map name="estacions" id="estacions">`)
-      .getString());
-	});
-
-	return MCData[region];
+  MCData[region] = new Promise((resolve, reject) => {
+    lwutils.getHTML("www.meteoclimatic.net", "/mapinfo/" + region, {
+      "Accept-Language": "ca-ES"
+    }, true)
+    .then(function(html){
+      resolve(new (lwutils.splitter)(html)
+        .cropToStrEx("<!-- Calendarii -->")
+        .getToStrEx(`<map name="estacions" id="estacions">`)
+        .getString());
+    }, (err) => {
+      reject(err);
+    });
+  });
+  return MCData[region];
 }
 
 function fetcher(args, timezone){

@@ -1,5 +1,4 @@
 var lwutils = new (require("./super_stations/lwutils"))();
-var Q = require('q');
 var Data = require("./../models/data");
 
 var stations = [];
@@ -157,7 +156,7 @@ function fetcher(id){
 
      return ret;
  	}, function(err){
-return Q.reject(err);
+    return Promise.reject(err);
   });
 
 }

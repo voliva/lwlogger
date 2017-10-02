@@ -1,5 +1,4 @@
 var lwutils = new (require("./super_stations/lwutils"))();
-var Q = require('q');
 var Data = require("./../models/data");
 
 var stations = [];
@@ -50,8 +49,6 @@ stations.push({code:"puertos/tenerifeS", arg: 2446});
 
 
 function fetcher(id, timezone){
-	var deferred = new Q.defer();
-
 	return lwutils.postHTML(
     "portus.puertos.es",
     "/Portus_RT/portusgwt/rpc", {

@@ -1,5 +1,4 @@
 var lwutils = new (require("./super_stations/lwutils"))();
-var Q = require('q');
 var Data = require("./../models/data");
 
 var stations = [];
@@ -27,6 +26,7 @@ stations.push(
 	},
 	post: function(res){
 		return res.then(function(data){
+			if(data == null) return null;
 			if(data.temp == -10.1)
 				data.temp = null;
 			return data;
@@ -34,15 +34,11 @@ stations.push(
 	}
 });
 
-
-
 function fetcher(args, timezone){
 	var host = args.host;
 	var path = args.path;
 
-	var deferred = new Q.defer();
-
-	lwutils.getHTML(host, path).then(function(html){
+	return lwutils.getHTML(host, path).then(function(html){
 		var arr = html.split(" ");
 		if(arr.length < 142) return null;
 
@@ -61,11 +57,8 @@ function fetcher(args, timezone){
 		// Encara que no sigui del tot correcte, manipularé les dades en aquest cas, perque no quedi lleig en el gràfic.
 		if(ret.gust < ret.wind) ret.gust = ret.wind;
 
-
-		deferred.resolve(ret);
+		return ret;
 	});
-
-	return deferred.promise;
 }
 
 module.exports = {

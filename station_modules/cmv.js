@@ -1,7 +1,6 @@
 // http://servidor.meteotek3000.com/estaciones/mkiii/jstags.php?username=tagsport&passwd=1772&id=4
 
 var lwutils = new (require("./super_stations/lwutils"))();
-var Q = require('q');
 var Data = require("./../models/data");
 var vm = require("vm");
 

@@ -1,4 +1,3 @@
-var Q = require('q');
 var http = require("http");
 var https = require("https");
 var tz = require("timezone");
@@ -7,31 +6,29 @@ module.exports = function(){
 	this.getHTML = function(host, path, headers, useHttps){
 		headers = headers || {};
 
-		var deferred = Q.defer();
-
-		(useHttps ? https : http).request({
-			hostname: host,
-			method: "GET",
-			path: path,
-			headers: headers
-		}, function(res){
-			if(res.statusCode >= 400)
-				deferred.reject(res.statusCode);
-			else{
-				res.setEncoding("utf8");
-				var body = "";
-				res.on("data", function(chunk){
-					body += chunk;
-				});
-				res.on("end", function(){
-					deferred.resolve(body);
-				})
-			}
-		}).on("error", function(err){
-			deferred.reject(err);
-		}).end();
-
-		return deferred.promise;
+		return new Promise((resolve, reject) => {
+			(useHttps ? https : http).request({
+				hostname: host,
+				method: "GET",
+				path: path,
+				headers: headers
+			}, function(res){
+				if(res.statusCode >= 400){
+					reject(res.statusCode);
+				}else{
+					res.setEncoding("utf8");
+					var body = "";
+					res.on("data", function(chunk){
+						body += chunk;
+					});
+					res.on("end", function(){
+						resolve(body);
+					})
+				}
+			}).on("error", function(err){
+				reject(err);
+			}).end();
+		});
 	}
 	this.postHTML = function(host, path, headers, body){
 		headers = headers || {};
@@ -39,34 +36,33 @@ module.exports = function(){
 
 		headers["Content-Length"] = body.length;
 
-		var deferred = Q.defer();
-		var req = http.request({
-			hostname: host,
-			method: "POST",
-			path: path,
-			headers: headers
-		}, function(res){
-			res.setEncoding("utf8");
-			var body = "";
-			res.on("data", function(chunk){
-				body += chunk;
+		return new Promise((resolve, reject) => {
+			var req = http.request({
+				hostname: host,
+				method: "POST",
+				path: path,
+				headers: headers
+			}, function(res){
+				res.setEncoding("utf8");
+				var body = "";
+				res.on("data", function(chunk){
+					body += chunk;
+				});
+				res.on("end", function(){
+					if(res.statusCode >= 400){
+						reject({
+							status: res.statusCode,
+							body: body
+						});
+					}
+					resolve(body);
+				});
+			}).on("error", function(err){
+				reject(err);
 			});
-			res.on("end", function(){
-				if(res.statusCode >= 400){
-					deferred.reject({
-						status: res.statusCode,
-						body: body
-					});
-				}
-				deferred.resolve(body);
-			});
-		}).on("error", function(err){
-			deferred.reject(err);
+			req.write(body);
+			req.end();
 		});
-		req.write(body);
-		req.end();
-
-		return deferred.promise;
 	}
 
 	// month 1-12

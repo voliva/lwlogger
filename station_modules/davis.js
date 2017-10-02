@@ -1,5 +1,4 @@
 var lwutils = new (require("./super_stations/lwutils"))();
-var Q = require('q');
 var Data = require("./../models/data");
 
 var stations = [];
@@ -34,10 +33,9 @@ stations.push({code: "empuriabrava", arg: "trastitu", post: function(res){
 }});
 
 function fetcher(user, timezone){
-	var deferred = new Q.defer();
-
-	lwutils.getHTML("www.weatherlink.com", "/user/" + user + "/index.php?view=summary&headers=0&type=1").then(function(html){
-		if(html.indexOf("Current Conditions") < 0) return deferred.reject("No current conditions");
+	return lwutils.getHTML("www.weatherlink.com", "/user/" + user + "/index.php?view=summary&headers=0&type=1")
+	.then(function(html){
+		if(html.indexOf("Current Conditions") < 0) return Promise.reject("No current conditions");
 
 		var ret = new Data();
 
@@ -144,10 +142,8 @@ function fetcher(user, timezone){
 			ret.rain = parseFloat(rain);
 		}
 
-		deferred.resolve(ret);
+		return ret;
 	});
-
-	return deferred.promise;
 }
 
 module.exports = {
