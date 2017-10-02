@@ -157,8 +157,8 @@ function fetcher(id){
 
      return ret;
  	}, function(err){
-     console.log("Err", err);
-  });;
+return Q.reject(err);
+  });
 
 }
 

@@ -31,10 +31,10 @@ function getMCData(region){
 
 	lwutils.getHTML("www.meteoclimatic.net", "/mapinfo/" + region, {
     "Accept-Language": "ca-ES"
-  }).then(function(html){
+  }, true).then(function(html){
     deferred.resolve(new (lwutils.splitter)(html)
       .cropToStrEx("<!-- Calendarii -->")
-      .getToStrEx("amb segell Meteoclimatic de qualitat destacada")
+      .getToStrEx(`<map name="estacions" id="estacions">`)
       .getString());
 	});
 
