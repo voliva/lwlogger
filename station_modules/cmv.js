@@ -5,7 +5,7 @@ var Data = require("./../models/data");
 var vm = require("vm");
 
 module.exports = {
-  stations: [{code:"cmv", args:"yes"}],
+  stations: [{id:19, args:"yes"}],
   fetch: function fetcher(arg){
   	return lwutils.getHTML("servidor.meteotek3000.com", "/estaciones/mkiii/jstags.php?username=tagsport&passwd=1772&id=4").then(function(js){
       js =

@@ -6,14 +6,10 @@ const AWS = require('aws-sdk');
 AWS.config.loadFromPath(process.env.AWS_CFG_PATH);
 const dynamoDB = new AWS.DynamoDB();
 
-const FILE_ROOT = "../www/dades"
-
 const stationToRun = process.argv[2];
 
 const fetchers = [];
 fs.readdirSync("./station_modules").forEach(function(file, i){
-	// if(i != 3) return;
-	// console.log(file);
 	if(file.indexOf(".js") > 0){
 		fetchers.push(require("./station_modules/" + file));
 	}
@@ -24,12 +20,12 @@ const dataToSave = [];
 
 fetchers.forEach(function(fetcher){
 	fetcher.stations.forEach(function(station){
-		if(stationToRun && station.code != stationToRun) return;
+		if(stationToRun && station.id != stationToRun) return;
 
 		var p = fetcher
 			.fetch(station.arg)
 			.catch(function(err){
-				console.log(station.code, err);
+				console.log(station.id, err);
 				console.log(err.stack);
 				return null;
 			});
@@ -42,17 +38,17 @@ fetchers.forEach(function(fetcher){
 				return;
 			}
 			try {
-				var res = stationsMonitor.check(station.code, data);
+				var res = stationsMonitor.check(station.id, data);
 				if(!res) {
 					return;
 				}
 
 				dataToSave.push({
-					stationId: station.code,
+					stationId: station.id,
 					data
 				})
 			}catch(ex){
-				console.log(station.code, err, data);
+				console.log(station.id, err, data);
 				console.log(err.stack);
 			}
 		});
@@ -121,7 +117,7 @@ function finish() {
 					if(err) {
 						console.log(err, result);
 					}
-					if(Object.keys(result.UnprocessedItems).length) {
+					if(result && Object.keys(result.UnprocessedItems).length) {
 						console.log('UnprocessedItems', result.UnprocessedItems);
 					}
 					resolve();

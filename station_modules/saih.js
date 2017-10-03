@@ -3,11 +3,11 @@ var Data = require("./../models/data");
 
 var stations = [];
 // Good quality: 5-10 min
-stations.push({code:"saih/ebro", arg: "EM01"});
-stations.push({code:"saih/alloz", arg: "EM30"});
-stations.push({code:"saih/laestanca", arg: "EM19"});
-stations.push({code:"saih/laloteta", arg: "E085"});
-stations.push({code:"saih/lasotonera", arg: "EM38",
+stations.push({id:94, arg: "EM01"});
+stations.push({id:96, arg: "EM30"});
+stations.push({id:97, arg: "E085"});
+stations.push({id:99, arg: "EM19"});
+stations.push({id:98, arg: "EM38",
 	post: function(res){
 		return res.then(function(data){
 			data.dir = 360 - data.dir;
