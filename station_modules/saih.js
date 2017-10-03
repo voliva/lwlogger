@@ -8,11 +8,9 @@ stations.push({id:96, arg: "EM30"});
 stations.push({id:97, arg: "E085"});
 stations.push({id:99, arg: "EM19"});
 stations.push({id:98, arg: "EM38",
-	post: function(res){
-		return res.then(function(data){
-			data.dir = 360 - data.dir;
-			return data;
-		});
+	post: function(data){
+    data.dir = 360 - data.dir;
+    return data;
 	}
 });
 
@@ -47,16 +45,15 @@ function fetcher(id){
 	}
 
 
-	return loginPromise.then(function(html){
-		return lwutils.getHTML(
+  return loginPromise
+    .mergeMap(html => lwutils.getHTML(
 	    "www.saihebro.com",
 	    "/saihebro/index.php?url=/datos/ficha/estacion:" + id,
 	    {
 	      "Accept-Language": "es",
-			"Cookie": `PHPSESSID=${process.env.SAIH_COOKIE}; lang=es`
+			  "Cookie": `PHPSESSID=${process.env.SAIH_COOKIE}; lang=es`
 	    }
-	  )
-	}).then(function(html){
+	  )).map(html => {
      html = new (lwutils.splitter)(html)
        .cropToStrEx("Datos anal")
        .getToStrEx("</table>")
@@ -155,9 +152,7 @@ function fetcher(id){
      }
 
      return ret;
- 	}, function(err){
-    return Promise.reject(err);
-  });
+ 	});
 
 }
 

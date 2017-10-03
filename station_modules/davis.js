@@ -25,17 +25,14 @@ stations.push({id: 44, arg: "setsaas"});
 stations.push({id: 55, arg: "cncg"});
 stations.push({id: 57, arg: "tinin30"});
 stations.push({id: 61, arg: "ibizapilot"});
-stations.push({id: 3, arg: "trastitu", post: function(res){
-  return res.then(function(data){
-    data.dir = Math.floor(data.dir + 180) % 360;
-    return data;
-  });
+stations.push({id: 3, arg: "trastitu", post: function(data){
+	data.dir = Math.floor(data.dir + 180) % 360;
 }});
 
 function fetcher(user, timezone){
 	return lwutils.getHTML("www.weatherlink.com", "/user/" + user + "/index.php?view=summary&headers=0&type=1")
-	.then(function(html){
-		if(html.indexOf("Current Conditions") < 0) return Promise.reject("No current conditions");
+	.map(html => {
+		if(html.indexOf("Current Conditions") < 0) return null;
 
 		var ret = new Data();
 

@@ -1,10 +1,9 @@
 const fs = require("fs");
 const stationsMonitor = require("./stationsMonitor");
-const mkdirp = require("mkdirp");
-const esTz = require("timezone")(require("timezone/Europe/Madrid"));
 const AWS = require('aws-sdk');
 AWS.config.loadFromPath(process.env.AWS_CFG_PATH);
 const dynamoDB = new AWS.DynamoDB();
+var Rx = require("rxjs");
 
 const stationToRun = process.argv[2];
 
@@ -15,47 +14,76 @@ fs.readdirSync("./station_modules").forEach(function(file, i){
 	}
 });
 
-const promises = [];
-const dataToSave = [];
 
-fetchers.forEach(function(fetcher){
-	fetcher.stations.forEach(function(station){
-		if(stationToRun && station.id != stationToRun) return;
-
-		var p = fetcher
-			.fetch(station.arg)
-			.catch(function(err){
-				console.log(station.id, err);
-				console.log(err.stack);
-				return null;
-			});
-		if(station.post){
-			p = station.post(p);
-		}
-		p = p.then(function(data){
-			if(stationToRun){
+Rx.Observable
+	.from(fetchers)
+	.mergeMap(fetcher => Rx.Observable
+		.from(fetcher.stations)
+		.map(station => ({fetcher, station}))
+	)
+	.filter(({station}) => !stationToRun || stationToRun == station.id)
+	.mergeMap(({fetcher, station}) => fetcher
+		.fetch(station.arg)
+		.map(p => station.post ? station.post(p) : p)
+		.map(data => {
+			if(stationToRun) {
 				console.log(data);
-				return;
+				return null;
 			}
-			try {
-				var res = stationsMonitor.check(station.id, data);
-				if(!res) {
-					return;
+			const checkResult = stationsMonitor.check(station.id, data);
+			switch(checkResult) {
+				case stationsMonitor.NO_CHANGE:
+					console.log(`station ${station.id} hasn't updated yet`);
+					return null;
+				case stationsMonitor.NO_DATA:
+					console.log(`station ${station.id} returned no data`);
+					return null;
+				case stationsMonitor.REPEAT:
+					console.log(`station ${station.id} repeated the same wind`);
+					return null;
+				case stationsMonitor.OK:
+					return {
+						stationId: station.id,
+						data
+					};
+				default:
+					console.log(`station ${station.id} unkown check result: ${checkResult}`);
+					return null;
+			}
+		})
+		.catch(err => {
+			console.log(`station ${station.id} raised an exception`, err);
+			return Rx.Observable.of(null);
+		})
+		.filter(v => !!v)
+	)
+	.bufferCount(25)
+	.mergeMap(resArr => {
+		console.log(`sending a ${resArr.length}-batch to AWS`);
+
+		const obj = {
+			RequestItems: {
+				'livewind-data': resArr.map(d => ({
+					PutRequest: createPutRequest(d.stationId, d.data)
+				}))
+			}
+		};
+
+		return Rx.Observable.create(obs => {
+			dynamoDB.batchWriteItem(obj, (err, result) => {
+				if(err) {
+					console.log(err, result);
 				}
-
-				dataToSave.push({
-					stationId: station.id,
-					data
-				})
-			}catch(ex){
-				console.log(station.id, err, data);
-				console.log(err.stack);
-			}
+				if(result && Object.keys(result.UnprocessedItems).length) {
+					console.log('UnprocessedItems', result.UnprocessedItems);
+				}
+				obs.next();
+				obs.complete();
+			});
 		});
-		promises.push(p);
-	});
-});
-
+	})
+	.subscribe(_ => {}, err => console.log(err), _ => stationsMonitor.save());
+	
 function formatNumericValue(n) {
 	if(n == null) {
 		return {
@@ -90,49 +118,6 @@ function createPutRequest(stationId, data) {
 	return {
 		Item
 	}
-}
-
-function finish() {
-	try {
-		stationsMonitor.save();
-
-		const dataToSaveBatches = [];
-		while(dataToSave.length > 24) {
-			dataToSaveBatches.push(dataToSave.splice(0, 24));
-		}
-		dataToSaveBatches.push(dataToSave);
-
-		let awsPromise = Promise.resolve();
-		dataToSaveBatches.forEach((batch) => {
-			awsPromise = awsPromise.then(() => new Promise((resolve, reject) => {
-				const obj = {
-					RequestItems: {
-						'livewind-data': batch.map(d => ({
-							PutRequest: createPutRequest(d.stationId, d.data)
-						}))
-					}
-				};
-		
-				const res = dynamoDB.batchWriteItem(obj, (err, result) => {
-					if(err) {
-						console.log(err, result);
-					}
-					if(result && Object.keys(result.UnprocessedItems).length) {
-						console.log('UnprocessedItems', result.UnprocessedItems);
-					}
-					resolve();
-				});
-			}));
-		});
-	}catch (ex){ 
-		console.log(ex);
-	}
-}
-
-if(!stationToRun){
-	Promise.all(
-		promises
-	).then(finish, finish);
 }
 
 // Crazy fast idea: Locate+track where people go sailing in order to discover new places.

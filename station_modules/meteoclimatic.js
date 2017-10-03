@@ -19,25 +19,24 @@ stations.push({id: 59, arg: {region: "ESIBA", code: "ESIBA0700000207840A"}})
 // premia cabrera mataro canet calella
 // TODO Awekas: (premià http://www.awekas.at/es/instrument.php?id=12238)
 
-
 var MCData = {};
 function getMCData(region){
   if(MCData[region]) return MCData[region];
 
   // Assuming 1 thread!
-  MCData[region] = new Promise((resolve, reject) => {
-    lwutils.getHTML("www.meteoclimatic.net", "/mapinfo/" + region, {
+  MCData[region] = lwutils
+    .getHTML("www.meteoclimatic.net", "/mapinfo/" + region, {
       "Accept-Language": "ca-ES"
     }, true)
-    .then(function(html){
-      resolve(new (lwutils.splitter)(html)
+    .map(html => 
+      new (lwutils.splitter)(html)
         .cropToStrEx("<!-- Calendarii -->")
         .getToStrEx(`<map name="estacions" id="estacions">`)
-        .getString());
-    }, (err) => {
-      reject(err);
-    });
-  });
+        .getString()
+    )
+    .publishLast();
+  MCData[region].connect();
+
   return MCData[region];
 }
 
@@ -45,7 +44,8 @@ function fetcher(args, timezone){
   var region = args.region;
   var code = args.code;
 
-  return getMCData(region).then(function(html){
+  return getMCData(region)
+  .map(html => {
     html = (new (lwutils.splitter)(html))
       .cropToStrEx("/perfil/" + code)
       .getToStrEx("</tr>")

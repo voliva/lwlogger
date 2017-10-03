@@ -19,17 +19,15 @@ stations.push({id: 80, arg: {host: "www.cngallineras.es", path: "/meteo/clientra
 stations.push({id: 85, arg: {host: "tiempo.fiochi.com", path: "/clientraw.txt"}});
 stations.push(
 	{
-		code: 6,
+		id: 6,
 		arg: {host: "www.cnestartit.es",
 		path: "/webphp/clientraw.txt"
 	},
-	post: function(res){
-		return res.then(function(data){
-			if(data == null) return null;
-			if(data.temp == -10.1)
-				data.temp = null;
-			return data;
-		});
+	post: function(data){
+		if(data == null) return null;
+		if(data.temp == -10.1)
+			data.temp = null;
+		return data;
 	}
 });
 
@@ -37,7 +35,7 @@ function fetcher(args, timezone){
 	var host = args.host;
 	var path = args.path;
 
-	return lwutils.getHTML(host, path).then(function(html){
+	return lwutils.getHTML(host, path).map(html => {
 		var arr = html.split(" ");
 		if(arr.length < 142) return null;
 

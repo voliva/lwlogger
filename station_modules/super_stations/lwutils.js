@@ -1,12 +1,13 @@
 var http = require("http");
 var https = require("https");
 var tz = require("timezone");
+var Rx = require("rxjs");
 
 module.exports = function(){
 	this.getHTML = function(host, path, headers, useHttps){
 		headers = headers || {};
 
-		return new Promise((resolve, reject) => {
+		return Rx.Observable.create(obs => {
 			(useHttps ? https : http).request({
 				hostname: host,
 				method: "GET",
@@ -14,7 +15,7 @@ module.exports = function(){
 				headers: headers
 			}, function(res){
 				if(res.statusCode >= 400){
-					reject(res.statusCode);
+					obs.error(res.statusCode);
 				}else{
 					res.setEncoding("utf8");
 					var body = "";
@@ -22,11 +23,12 @@ module.exports = function(){
 						body += chunk;
 					});
 					res.on("end", function(){
-						resolve(body);
-					})
+						obs.next(body);
+						obs.complete();
+					});
 				}
 			}).on("error", function(err){
-				reject(err);
+				obs.error(err);
 			}).end();
 		});
 	}
@@ -36,29 +38,34 @@ module.exports = function(){
 
 		headers["Content-Length"] = body.length;
 
-		return new Promise((resolve, reject) => {
+		return Rx.Observable.create(obs => {
 			var req = http.request({
 				hostname: host,
 				method: "POST",
 				path: path,
 				headers: headers
 			}, function(res){
-				res.setEncoding("utf8");
-				var body = "";
-				res.on("data", function(chunk){
-					body += chunk;
-				});
-				res.on("end", function(){
-					if(res.statusCode >= 400){
-						reject({
-							status: res.statusCode,
-							body: body
-						});
-					}
-					resolve(body);
-				});
+				if(res.statusCode >= 400){
+					obs.error(res.statusCode);
+				}else{
+					res.setEncoding("utf8");
+					var body = "";
+					res.on("data", function(chunk){
+						body += chunk;
+					});
+					res.on("end", function(){
+						if(res.statusCode >= 400){
+							reject({
+								status: res.statusCode,
+								body: body
+							});
+						}
+						obs.next(body);
+						obs.complete();
+					});
+				}
 			}).on("error", function(err){
-				reject(err);
+				obs.error(err);
 			});
 			req.write(body);
 			req.end();

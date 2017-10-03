@@ -57,7 +57,7 @@ function fetcher(id, timezone){
       "X-GWT-Permutation": "111ADDA4C45CBCEFFA5F277B516481A5"
     },
     "7|0|5|http://portus.puertos.es/Portus_RT/portusgwt/|4E7E7D41B0B2B89535613848D893F712|es.puertos.portus.main.client.service.PortusService|requestLastData|I|1|2|3|4|1|5|" + id + "|"
-  ).then(function(html){
+  ).map(html => {
     var array = new (lwutils.splitter)(html)
       .cropToStrEx("[")
       .cropToStrEx("[\"")
@@ -124,9 +124,7 @@ function fetcher(id, timezone){
 		if(!ret.dateTime) ret.dateTime = new Date();
 
 		return ret;
-	}, function(err){
-    console.log("Err", err);
-  });
+	});
 }
 
 module.exports = {

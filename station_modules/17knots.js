@@ -8,8 +8,7 @@ module.exports = {
       "www.17nudos.com",
       "/update_me.php", {
         "Referer": "http://www.17nudos.com/index.php"
-      }).then(function(html){
-
+      }).map(html => {
         var ret = new Data();
         ret.dateTime = new Date();
 
