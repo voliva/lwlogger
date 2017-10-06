@@ -19,6 +19,7 @@
     "csvreader": "^1.0.2",
     "mongoose": "^4.4.15",
     "rxjs": "^5.4.3",
-    "timezone": "0.0.39"
+    "timezone": "0.0.39",
+    "tingodb": "^0.5.1"
   }
 }

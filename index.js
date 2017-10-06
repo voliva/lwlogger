@@ -1,9 +1,13 @@
 const fs = require("fs");
 const stationsMonitor = require("./stationsMonitor");
 const AWS = require('aws-sdk');
-AWS.config.loadFromPath(process.env.AWS_CFG_PATH);
+AWS.config.loadFromPath(process.env.AWS_CFG_PATH || '/home/victor/development/lwlogger/credentials.json');
 const dynamoDB = new AWS.DynamoDB();
-var Rx = require("rxjs");
+const Rx = require("rxjs");
+const Engine = require('tingodb')();
+
+const db = new Engine.Db(process.env.TINGO_DB_PATH || '/home/victor/development/lwlogger/data', {});
+const dbCollection = db.collection('livewind-data');
 
 const stationToRun = process.argv[2];
 
@@ -57,6 +61,24 @@ Rx.Observable
 		})
 		.filter(v => !!v)
 	)
+	.map(res => {
+		dbCollection.insert({
+			stationId: res.stationId,
+			timestamp: Math.floor(res.data.dateTime.getTime()/1000),
+			temperature: res.data.temp,
+			humidity: res.data.hidro,
+			pressure: res.data.pressure,
+			wind: res.data.wind,
+			gust: res.data.gust,
+			direction: res.data.dir,
+			rain: res.data.rain
+		}, (err, result) => {
+			if(err) {
+				console.log(res, err);
+			}
+		});
+		return res;
+	})
 	.bufferCount(25)
 	.mergeMap(resArr => {
 		console.log(`sending a ${resArr.length}-batch to AWS`);
