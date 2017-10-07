@@ -7,7 +7,8 @@ const Rx = require("rxjs");
 const Engine = require('tingodb')();
 
 const db = new Engine.Db(process.env.TINGO_DB_PATH || '/home/victor/development/lwlogger/data', {});
-const dbCollection = db.collection('livewind-data');
+const dataCollection = db.collection('livewind-data');
+const lastDataCollection = db.collection('livewind-lastdata');
 
 const stationToRun = process.argv[2];
 
@@ -19,7 +20,7 @@ fs.readdirSync("./station_modules").forEach(function(file, i){
 });
 
 
-Rx.Observable
+const dataStream = Rx.Observable
 	.from(fetchers)
 	.mergeMap(fetcher => Rx.Observable
 		.from(fetcher.stations)
@@ -61,24 +62,42 @@ Rx.Observable
 		})
 		.filter(v => !!v)
 	)
-	.map(res => {
-		dbCollection.insert({
-			stationId: res.stationId,
-			timestamp: Math.floor(res.data.dateTime.getTime()/1000),
-			temperature: res.data.temp,
-			humidity: res.data.hidro,
-			pressure: res.data.pressure,
-			wind: res.data.wind,
-			gust: res.data.gust,
-			direction: res.data.dir,
-			rain: res.data.rain
-		}, (err, result) => {
-			if(err) {
-				console.log(res, err);
-			}
-		});
-		return res;
-	})
+	.publish();
+
+// TingoDB
+dataStream.subscribe(res => {
+	const data = {
+		stationId: res.stationId,
+		timestamp: Math.floor(res.data.dateTime.getTime()/1000),
+		temperature: res.data.temp,
+		humidity: res.data.hidro,
+		pressure: res.data.pressure,
+		wind: res.data.wind,
+		gust: res.data.gust,
+		direction: res.data.dir,
+		rain: res.data.rain
+	};
+	dataCollection.insert(data, (err, result) => {
+		if(err) {
+			console.log(res, err);
+		}
+	});
+
+	lastDataCollection.update({
+		stationId: {$eq: res.stationId}
+	}, {
+		$set: data
+	}, {
+		upsert: true
+	}, (err, result) => {
+		if(err) {
+			console.log(res, err);
+		}
+	});
+});
+
+// AWS
+dataStream
 	.bufferCount(25)
 	.mergeMap(resArr => {
 		console.log(`sending a ${resArr.length}-batch to AWS`);
@@ -105,7 +124,9 @@ Rx.Observable
 		});
 	})
 	.subscribe(_ => {}, err => console.log(err), _ => stationsMonitor.save());
-	
+
+dataStream.connect();
+
 function formatNumericValue(n) {
 	if(n == null) {
 		return {
