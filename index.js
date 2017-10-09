@@ -4,22 +4,28 @@ const AWS = require('aws-sdk');
 AWS.config.loadFromPath(process.env.AWS_CFG_PATH || '/home/victor/development/lwlogger/credentials.json');
 const dynamoDB = new AWS.DynamoDB();
 const Rx = require("rxjs");
-const Engine = require('tingodb')();
+const mysql2 = require('mysql2/promise');
 
-const db = new Engine.Db(process.env.TINGO_DB_PATH || '/home/victor/development/lwlogger/data', {});
-const dataCollection = db.collection('livewind-data');
-const lastDataCollection = db.collection('livewind-lastdata');
+const mySQLconnection = mysql2.createConnection({
+	host: process.env.SQL_DB_HOST,
+	user: process.env.SQL_DB_USER,
+	password: process.env.SQL_DB_PSW,
+	database: process.env.SQL_DB_NAME
+});
 
 const stationToRun = process.argv[2];
 
 const fetchers = [];
 fs.readdirSync("./station_modules").forEach(function(file, i){
+	// if(i != 0) return;
 	if(file.indexOf(".js") > 0){
 		fetchers.push(require("./station_modules/" + file));
 	}
 });
 
-
+/** Counter */
+let finished = 0;
+let total = 0;
 const dataStream = Rx.Observable
 	.from(fetchers)
 	.mergeMap(fetcher => Rx.Observable
@@ -27,6 +33,7 @@ const dataStream = Rx.Observable
 		.map(station => ({fetcher, station}))
 	)
 	.filter(({station}) => !stationToRun || stationToRun == station.id)
+	.do(_ => total++)
 	.mergeMap(({fetcher, station}) => fetcher
 		.fetch(station.arg)
 		.map(p => station.post ? station.post(p) : p)
@@ -60,12 +67,24 @@ const dataStream = Rx.Observable
 			console.log(`station ${station.id} raised an exception`, err);
 			return Rx.Observable.of(null);
 		})
+		.do(_ => {
+			finished++;
+			// console.log(`${finished}/${total}`);
+		})
 		.filter(v => !!v)
+		.filter(v => v.data.temp ||
+			v.data.temp ||
+			v.data.hidro ||
+			v.data.pressure ||
+			v.data.wind ||
+			v.data.gust ||
+			v.data.dir ||
+			v.data.rain)
 	)
 	.publish();
 
-// TingoDB
-dataStream.subscribe(res => {
+/** MySQL **/
+dataStream.mergeMap((res) => {
 	const data = {
 		stationId: res.stationId,
 		timestamp: Math.floor(res.data.dateTime.getTime()/1000),
@@ -77,23 +96,34 @@ dataStream.subscribe(res => {
 		direction: res.data.dir,
 		rain: res.data.rain
 	};
-	dataCollection.insert(data, (err, result) => {
-		if(err) {
-			console.log(res, err);
-		}
-	});
+	const insertQuery = (op, table) => `${op} INTO
+		${table} (stationId, timestamp, temperature, humidity, pressure, wind, gust, direction, rain)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+	const queryData = [
+		data.stationId,
+		data.timestamp,
+		data.temperature || null,
+		data.humidity || null,
+		data.pressure || null,
+		data.wind || null,
+		data.gust || null,
+		data.direction || null,
+		data.rain || null
+	];
+console.log(queryData);
+	const runQueries = async () => {
+		const connection = await mySQLconnection;
+		await connection.execute(insertQuery('INSERT','weatherData'), queryData);
+		await connection.execute(
+			insertQuery('REPLACE', 'lastWeatherData'),
+			queryData
+		);
+	}
 
-	lastDataCollection.update({
-		stationId: {$eq: res.stationId}
-	}, {
-		$set: data
-	}, {
-		upsert: true
-	}, (err, result) => {
-		if(err) {
-			console.log(res, err);
-		}
-	});
+	return Rx.Observable.fromPromise(runQueries());	
+}).subscribe(() => {}, () => {}, async () => {
+	const connection = await mySQLconnection;
+	connection.close();
 });
 
 // AWS

@@ -8,7 +8,7 @@ module.exports = function(){
 		headers = headers || {};
 
 		return Rx.Observable.create(obs => {
-			(useHttps ? https : http).request({
+			const req = (useHttps ? https : http).request({
 				hostname: host,
 				method: "GET",
 				path: path,
@@ -27,9 +27,17 @@ module.exports = function(){
 						obs.complete();
 					});
 				}
-			}).on("error", function(err){
+			});
+			req.on("error", function(err){
 				obs.error(err);
-			}).end();
+			});
+			req.on('socket', function (socket) {
+				socket.setTimeout(10000);
+				socket.on('timeout', function() {
+					req.abort();
+				});
+			});
+			req.end();
 		});
 	}
 	this.postHTML = function(host, path, headers, body){
@@ -39,7 +47,7 @@ module.exports = function(){
 		headers["Content-Length"] = body.length;
 
 		return Rx.Observable.create(obs => {
-			var req = http.request({
+			const req = http.request({
 				hostname: host,
 				method: "POST",
 				path: path,
@@ -64,8 +72,15 @@ module.exports = function(){
 						obs.complete();
 					});
 				}
-			}).on("error", function(err){
+			});
+			req.on("error", function(err){
 				obs.error(err);
+			});
+			req.on('socket', function (socket) {
+				socket.setTimeout(10000);
+				socket.on('timeout', function() {
+					req.abort();
+				});
 			});
 			req.write(body);
 			req.end();
