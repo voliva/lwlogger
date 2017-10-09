@@ -46,7 +46,7 @@ module.exports = {
 	NO_DATA,
 	check: function(id, data) {
 		// If there's no data, then the station is not working
-		if (!data) {
+		if (!data || !data.dateTime) {
 			if (table[id]) {
 				table[id].fails = true;
 				table[id].missingLecture = true;

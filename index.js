@@ -36,7 +36,7 @@ const dataStream = Rx.Observable
 	.do(_ => total++)
 	.mergeMap(({fetcher, station}) => fetcher
 		.fetch(station.arg)
-		.map(p => station.post ? station.post(p) : p)
+		.map(data => (data && station.post) ? station.post(data) : data)
 		.map(data => {
 			if(stationToRun) {
 				console.log(data);
