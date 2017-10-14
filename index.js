@@ -84,6 +84,8 @@ const dataStream = Rx.Observable
 	.publish();
 
 /** MySQL **/
+const maybe = v => typeof v === 'undefined' ? null : v;
+const timestampLimit = Math.floor(new Date().getTime() / 1000 - 60*60); // Delete all records older than an hour
 dataStream.mergeMap((res) => {
 	const data = {
 		stationId: res.stationId,
@@ -102,27 +104,29 @@ dataStream.mergeMap((res) => {
 	const queryData = [
 		data.stationId,
 		data.timestamp,
-		data.temperature || null,
-		data.humidity || null,
-		data.pressure || null,
-		data.wind || null,
-		data.gust || null,
-		data.direction || null,
-		data.rain || null
+		maybe(data.temperature),
+		maybe(data.humidity),
+		maybe(data.pressure),
+		maybe(data.wind),
+		maybe(data.gust),
+		maybe(data.direction),
+		maybe(data.rain)
 	];
-console.log(queryData);
 	const runQueries = async () => {
 		const connection = await mySQLconnection;
 		await connection.execute(insertQuery('INSERT','weatherData'), queryData);
-		await connection.execute(
-			insertQuery('REPLACE', 'lastWeatherData'),
-			queryData
-		);
+		if(data.timestamp >= timestampLimit) {
+			await connection.execute(
+				insertQuery('REPLACE', 'lastWeatherData'),
+				queryData
+			);
+		}
 	}
 
 	return Rx.Observable.fromPromise(runQueries());	
 }).subscribe(() => {}, () => {}, async () => {
 	const connection = await mySQLconnection;
+	await connection.execute('DELETE FROM lastWeatherData WHERE timestamp < ' + timestampLimit);
 	connection.close();
 });
 
