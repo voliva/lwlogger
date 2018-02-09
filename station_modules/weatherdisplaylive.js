@@ -5,7 +5,6 @@ var stations = [];
 stations.push({id: 1, arg:{host: "www.cnps.cat", path:"/meteo_nova/clientraw.txt"}});
 // stations.push({id: 4, arg: {host: "www.ballena-alegre.com", path: "/meteo/clientraw.txt"}});
 stations.push({id: 5, arg: {host: "www.nauticescala.com", path: "/content/conf/clientraw.txt"}});
-stations.push({id: 12, arg:{host: "www.clubnauticportdaro.cat", path:"/meteo/clientraw.txt"}});
 stations.push({id: 14, arg:{host: "serveis.pinedasensefils.cat", path:"/clientraw.txt"}});
 // Anemometre trencat stations.push({id: 23, arg: {host: "www.t33a.com", path: "/garraf/clientraw.txt"}});
 stations.push({id: 34, arg: {host: "www.cnoropesa.com", path: "/wd/clientraw.txt"}});

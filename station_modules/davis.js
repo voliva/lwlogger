@@ -28,6 +28,7 @@ stations.push({id: 61, arg: "ibizapilot"});
 stations.push({id: 3, arg: "trastitu", post: function(data){
 	data.dir = Math.floor(data.dir + 180) % 360;
 }});
+stations.push({id: 12, arg:"cnportdaro"});
 
 function fetcher(user, timezone){
 	return lwutils.getHTML("www.weatherlink.com", "/user/" + user + "/index.php?view=summary&headers=0&type=1")

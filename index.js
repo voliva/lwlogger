@@ -1,8 +1,5 @@
 const fs = require("fs");
 const stationsMonitor = require("./stationsMonitor");
-const AWS = require('aws-sdk');
-AWS.config.loadFromPath(process.env.AWS_CFG_PATH || '/home/victor/development/lwlogger/credentials.json');
-const dynamoDB = new AWS.DynamoDB();
 const Rx = require("rxjs");
 const mysql2 = require('mysql2/promise');
 
@@ -129,35 +126,6 @@ dataStream.mergeMap((res) => {
 	await connection.execute('DELETE FROM lastWeatherData WHERE timestamp < ' + timestampLimit);
 	connection.close();
 });
-
-// AWS
-dataStream
-	.bufferCount(25)
-	.mergeMap(resArr => {
-		console.log(`sending a ${resArr.length}-batch to AWS`);
-
-		const obj = {
-			RequestItems: {
-				'livewind-data': resArr.map(d => ({
-					PutRequest: createPutRequest(d.stationId, d.data)
-				}))
-			}
-		};
-
-		return Rx.Observable.create(obs => {
-			dynamoDB.batchWriteItem(obj, (err, result) => {
-				if(err) {
-					console.log(err, result);
-				}
-				if(result && Object.keys(result.UnprocessedItems).length) {
-					console.log('UnprocessedItems', result.UnprocessedItems);
-				}
-				obs.next();
-				obs.complete();
-			});
-		});
-	})
-	.subscribe(_ => {}, err => console.log(err), _ => stationsMonitor.save());
 
 dataStream.connect();
 
