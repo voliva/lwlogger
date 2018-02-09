@@ -1,16 +1,14 @@
 var lwutils = new (require("./super_stations/lwutils"))();
-var Q = require('q');
 var Data = require("./../models/data");
 
 module.exports = {
-  stations: [{code:"17nudos", args:"yes"}],
+  stations: [{id:21, args:"yes"}],
   fetch: function fetcher(arg){
   	return lwutils.postHTML(
       "www.17nudos.com",
       "/update_me.php", {
         "Referer": "http://www.17nudos.com/index.php"
-      }).then(function(html){
-
+      }).map(html => {
         var ret = new Data();
         ret.dateTime = new Date();
 

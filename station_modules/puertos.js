@@ -1,57 +1,54 @@
 var lwutils = new (require("./super_stations/lwutils"))();
-var Q = require('q');
 var Data = require("./../models/data");
 
 var stations = [];
 // Good quality: 5-10 min
-stations.push({code:"puertos/tarragona", arg: 3756});
-stations.push({code:"puertos/maho", arg: 3860});
-stations.push({code:"puertos/alcudia", arg: 3853});
-stations.push({code:"puertos/palmamall", arg: 3851});
-stations.push({code:"puertos/ibiza", arg: 3856});
-stations.push({code:"puertos/formentera", arg: 3855});
-stations.push({code:"puertos/carboneras", arg: 3547});
-stations.push({code:"puertos/roldan", arg: 4581});
-stations.push({code:"puertos/almeria", arg: 3545});
-stations.push({code:"puertos/almeria2", arg: 3548});
-stations.push({code:"puertos/campamento", arg: 4396});
-stations.push({code:"puertos/algeciras", arg: 3541});
-stations.push({code:"puertos/endesa", arg: 4397});
-stations.push({code:"puertos/abrigo", arg: 4391});
-stations.push({code:"puertos/exentoN", arg: 4394});
-stations.push({code:"puertos/exentoS", arg: 4395}); // Parada
-stations.push({code:"puertos/carnero", arg: 4392});
-stations.push({code:"puertos/tarifa", arg: 4393});
-stations.push({code:"puertos/tarifaDique", arg: 4398});
-stations.push({code:"puertos/vigo2", arg: 3221});
-stations.push({code:"puertos/ferrol", arg: 3215});
-stations.push({code:"puertos/gijon2", arg: 3108});
-stations.push({code:"puertos/lanzarote", arg: 3470});
-stations.push({code:"puertos/fuerteventura", arg: 3469});
-stations.push({code:"puertos/laspalmas", arg: 3450});
+stations.push({id:29, arg: 3756});
+stations.push({id:49, arg: 3860});
+stations.push({id:51, arg: 3853});
+stations.push({id:56, arg: 3851});
+stations.push({id:60, arg: 3856});
+stations.push({id:62, arg: 3855});
+stations.push({id:63, arg: 3547});
+stations.push({id:64, arg: 4581});
+stations.push({id:66, arg: 3545});
+stations.push({id:67, arg: 3548});
+stations.push({id:71, arg: 4396});
+stations.push({id:72, arg: 3541});
+stations.push({id:73, arg: 4397});
+stations.push({id:74, arg: 4391});
+stations.push({id:75, arg: 4394});
+stations.push({id:76, arg: 4395}); // Parada
+stations.push({id:77, arg: 4392});
+stations.push({id:78, arg: 4393});
+stations.push({id:79, arg: 4398});
+stations.push({id:93, arg: 3221});
+stations.push({id:91, arg: 3215});
+stations.push({id:87, arg: 3108});
+stations.push({id:100, arg: 3470});
+stations.push({id:101, arg: 3469});
+stations.push({id:102, arg: 3450});
 
 // Bad quality: 1h
-stations.push({code:"puertos/begur", arg: 2798});
-stations.push({code:"puertos/tarrboya", arg: 2720});
-stations.push({code:"puertos/valencia", arg: 2630});
-stations.push({code:"puertos/mahoboya", arg: 2838});
-stations.push({code:"puertos/dragonera", arg: 2820});
-stations.push({code:"puertos/palos", arg: 2610});
-stations.push({code:"puertos/gata", arg: 2548});
-// Averiada stations.push({code:"puertos/carneroBoya", arg: 1504});
-stations.push({code:"puertos/cadizBoya", arg: 2342});
-stations.push({code:"puertos/langosteira", arg: 1239});
-stations.push({code:"puertos/bares", arg: 2244});
-stations.push({code:"puertos/penas", arg: 2242});
-stations.push({code:"puertos/santander", arg: 2150});
-stations.push({code:"puertos/bilbao", arg: 2136});
-stations.push({code:"puertos/grancanaria", arg: 2442});
-stations.push({code:"puertos/tenerifeS", arg: 2446});
+stations.push({id:8, arg: 2798});
+stations.push({id:32, arg: 2720});
+stations.push({id:35, arg: 2630});
+stations.push({id:50, arg: 2838});
+stations.push({id:58, arg: 2820});
+stations.push({id:47, arg: 2610});
+stations.push({id:65, arg: 2548});
+// Averiada stations.push({id:"puertos/carneroBoya", arg: 1504});
+stations.push({id:81, arg: 2342});
+stations.push({id:92, arg: 1239});
+stations.push({id:90, arg: 2244});
+stations.push({id:88, arg: 2242});
+stations.push({id:86, arg: 2150});
+stations.push({id:84, arg: 2136});
+stations.push({id:103, arg: 2442});
+stations.push({id:104, arg: 2446});
 
 
 function fetcher(id, timezone){
-	var deferred = new Q.defer();
-
 	return lwutils.postHTML(
     "portus.puertos.es",
     "/Portus_RT/portusgwt/rpc", {
@@ -60,7 +57,7 @@ function fetcher(id, timezone){
       "X-GWT-Permutation": "111ADDA4C45CBCEFFA5F277B516481A5"
     },
     "7|0|5|http://portus.puertos.es/Portus_RT/portusgwt/|4E7E7D41B0B2B89535613848D893F712|es.puertos.portus.main.client.service.PortusService|requestLastData|I|1|2|3|4|1|5|" + id + "|"
-  ).then(function(html){
+  ).map(html => {
     var array = new (lwutils.splitter)(html)
       .cropToStrEx("[")
       .cropToStrEx("[\"")
@@ -127,9 +124,7 @@ function fetcher(id, timezone){
 		if(!ret.dateTime) ret.dateTime = new Date();
 
 		return ret;
-	}, function(err){
-    console.log("Err", err);
-  });
+	});
 }
 
 module.exports = {
