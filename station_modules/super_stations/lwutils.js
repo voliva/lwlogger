@@ -1,36 +1,44 @@
-var Q = require('q');
 var http = require("http");
+var https = require("https");
 var tz = require("timezone");
+var Rx = require("rxjs");
 
 module.exports = function(){
-	this.getHTML = function(host, path, headers){
+	this.getHTML = function(host, path, headers, useHttps){
 		headers = headers || {};
 
-		var deferred = Q.defer();
-
-		http.request({
-			hostname: host,
-			method: "GET",
-			path: path,
-			headers: headers
-		}, function(res){
-			if(res.statusCode >= 400)
-				deferred.reject(res.statusCode);
-			else{
-				res.setEncoding("utf8");
-				var body = "";
-				res.on("data", function(chunk){
-					body += chunk;
+		return Rx.Observable.create(obs => {
+			const req = (useHttps ? https : http).request({
+				hostname: host,
+				method: "GET",
+				path: path,
+				headers: headers
+			}, function(res){
+				if(res.statusCode >= 400){
+					obs.error(res.statusCode);
+				}else{
+					res.setEncoding("utf8");
+					var body = "";
+					res.on("data", function(chunk){
+						body += chunk;
+					});
+					res.on("end", function(){
+						obs.next(body);
+						obs.complete();
+					});
+				}
+			});
+			req.on("error", function(err){
+				obs.error(err);
+			});
+			req.on('socket', function (socket) {
+				socket.setTimeout(10000);
+				socket.on('timeout', function() {
+					req.abort();
 				});
-				res.on("end", function(){
-					deferred.resolve(body);
-				})
-			}
-		}).on("error", function(err){
-			deferred.reject(err);
-		}).end();
-
-		return deferred.promise;
+			});
+			req.end();
+		});
 	}
 	this.postHTML = function(host, path, headers, body){
 		headers = headers || {};
@@ -38,33 +46,45 @@ module.exports = function(){
 
 		headers["Content-Length"] = body.length;
 
-		var deferred = Q.defer();
-
-		var req = http.request({
-			hostname: host,
-			method: "POST",
-			path: path,
-			headers: headers
-		}, function(res){
-			res.setEncoding("utf8");
-			var body = "";
-			res.on("data", function(chunk){
-				body += chunk;
-			});
-			res.on("end", function(){
+		return Rx.Observable.create(obs => {
+			const req = http.request({
+				hostname: host,
+				method: "POST",
+				path: path,
+				headers: headers
+			}, function(res){
 				if(res.statusCode >= 400){
-					deferred.reject({
-						status: res.statusCode,
-						body: body
+					obs.error(res.statusCode);
+				}else{
+					res.setEncoding("utf8");
+					var body = "";
+					res.on("data", function(chunk){
+						body += chunk;
+					});
+					res.on("end", function(){
+						if(res.statusCode >= 400){
+							reject({
+								status: res.statusCode,
+								body: body
+							});
+						}
+						obs.next(body);
+						obs.complete();
 					});
 				}
-				deferred.resolve(body);
 			});
+			req.on("error", function(err){
+				obs.error(err);
+			});
+			req.on('socket', function (socket) {
+				socket.setTimeout(10000);
+				socket.on('timeout', function() {
+					req.abort();
+				});
+			});
+			req.write(body);
+			req.end();
 		});
-		req.write(body);
-		req.end();
-
-		return deferred.promise;
 	}
 
 	// month 1-12

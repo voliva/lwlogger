@@ -1,51 +1,51 @@
 var lwutils = new (require("./super_stations/lwutils"))();
-var Q = require('q');
 var Data = require("./../models/data");
 
 var stations = [];
-stations.push({code: "meteoclimatic/stcarlesrapita", arg: {region: "ESCAT", code: "ESCAT4300000043540A"}});
-stations.push({code: "meteoclimatic/miamiplatja", arg: {region: "ESCAT", code: "ESCAT4300000043892C"}});
-stations.push({code: "meteoclimatic/hospitalet", arg: {region: "ESCAT", code: "ESCAT4300000043890A"}});
-stations.push({code: "meteoclimatic/cubelles", arg: {region: "ESCAT", code: "ESCAT0800000008880D"}}); // Nativa http://meteo.ea3hkb.com/
-stations.push({code: "meteoclimatic/vilanova", arg: {region: "ESCAT", code: "ESCAT0800000008800F"}}); // Nativa http://www.meteovilanova.info/Current_Vantage.htm
-stations.push({code: "meteoclimatic/castelldefels", arg: {region: "ESCAT", code: "ESCAT0800000008860B"}});
-stations.push({code: "meteoclimatic/barcelona", arg: {region: "ESCAT", code: "ESCAT0800000008003F"}}); // Nativa http://meteo.cmima.csic.es/davis/Current_Vantage_Pro_Plus.html
-stations.push({code: "meteopremia", arg: {region: "ESCAT", code: "ESCAT0800000008330B"}}); // Nativa http://www.meteopremia.com/port/
-stations.push({code: "meteoclimatic/premiaplatja", arg: {region: "ESCAT", code: "ESCAT0800000008330E"}}); // Nativa http://cbc117.zapto.org/
-stations.push({code: "meteoclimatic/mataro", arg: {region: "ESCAT", code: "ESCAT0800000008301F"}});
-stations.push({code: "meteoclimatic/calella", arg: {region: "ESCAT", code: "ESCAT0800000008370A"}});
-stations.push({code: "meteoclimatic/ciutadellamenorca", arg: {region: "ESIBA", code: "ESIBA0700000307760A"}});
-stations.push({code: "meteoclimatic/staeulaliario", arg: {region: "ESIBA", code: "ESIBA0700000207840A"}})
+stations.push({id: 33, arg: {region: "ESCAT", code: "ESCAT4300000043540A"}});
+stations.push({id: 30, arg: {region: "ESCAT", code: "ESCAT4300000043892C"}});
+stations.push({id: 31, arg: {region: "ESCAT", code: "ESCAT4300000043890A"}});
+stations.push({id: 26, arg: {region: "ESCAT", code: "ESCAT0800000008880D"}}); // Nativa http://meteo.ea3hkb.com/
+stations.push({id: 25, arg: {region: "ESCAT", code: "ESCAT0800000008800F"}}); // Nativa http://www.meteovilanova.info/Current_Vantage.htm
+stations.push({id: 22, arg: {region: "ESCAT", code: "ESCAT0800000008860B"}});
+stations.push({id: 20, arg: {region: "ESCAT", code: "ESCAT0800000008003F"}}); // Nativa http://meteo.cmima.csic.es/davis/Current_Vantage_Pro_Plus.html
+stations.push({id: 17, arg: {region: "ESCAT", code: "ESCAT0800000008330B"}}); // Nativa http://www.meteopremia.com/port/
+stations.push({id: 18, arg: {region: "ESCAT", code: "ESCAT0800000008330E"}}); // Nativa http://cbc117.zapto.org/
+stations.push({id: 16, arg: {region: "ESCAT", code: "ESCAT0800000008301F"}});
+stations.push({id: 15, arg: {region: "ESCAT", code: "ESCAT0800000008370A"}});
+stations.push({id: 48, arg: {region: "ESIBA", code: "ESIBA0700000307760A"}});
+stations.push({id: 59, arg: {region: "ESIBA", code: "ESIBA0700000207840A"}})
 
 // premia cabrera mataro canet calella
 // TODO Awekas: (premià http://www.awekas.at/es/instrument.php?id=12238)
 
-
 var MCData = {};
 function getMCData(region){
-  var deferred = new Q.defer();
+  if(MCData[region]) return MCData[region];
 
   // Assuming 1 thread!
-  if(MCData[region]) return MCData[region];
-  MCData[region] = deferred.promise;
+  MCData[region] = lwutils
+    .getHTML("www.meteoclimatic.net", "/mapinfo/" + region, {
+      "Accept-Language": "ca-ES"
+    }, true)
+    .map(html => 
+      new (lwutils.splitter)(html)
+        .cropToStrEx("<!-- Calendarii -->")
+        .getToStrEx(`<map name="estacions" id="estacions">`)
+        .getString()
+    )
+    .publishLast();
+  MCData[region].connect();
 
-	lwutils.getHTML("www.meteoclimatic.net", "/mapinfo/" + region, {
-    "Accept-Language": "ca-ES"
-  }).then(function(html){
-    deferred.resolve(new (lwutils.splitter)(html)
-      .cropToStrEx("<!-- Calendarii -->")
-      .getToStrEx("amb segell Meteoclimatic de qualitat destacada")
-      .getString());
-	});
-
-	return MCData[region];
+  return MCData[region];
 }
 
 function fetcher(args, timezone){
   var region = args.region;
   var code = args.code;
 
-  return getMCData(region).then(function(html){
+  return getMCData(region)
+  .map(html => {
     html = (new (lwutils.splitter)(html))
       .cropToStrEx("/perfil/" + code)
       .getToStrEx("</tr>")

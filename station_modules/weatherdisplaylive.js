@@ -1,48 +1,40 @@
 var lwutils = new (require("./super_stations/lwutils"))();
-var Q = require('q');
 var Data = require("./../models/data");
 
 var stations = [];
-stations.push({code: "cnga", arg: {host: "www.cngallineras.es", path: "/meteo/clientraw.txt"}});
-stations.push({code: "rcng", arg: {host: "www.meteogandia.com", path: "/clientraw.txt"}});
-// Anemometre trencat stations.push({code: "cng", arg: {host: "www.t33a.com", path: "/garraf/clientraw.txt"}});
-stations.push({code: "cnle", arg: {host: "www.nauticescala.com", path: "/content/conf/clientraw.txt"}});
-stations.push({code: "marbella", arg: {host: "www.meteopuertobanus.es", path: "/clientraw.txt"}});
-stations.push({code: "cno", arg: {host: "www.cnoropesa.com", path: "/wd/clientraw.txt"}});
-stations.push({code: "santander", arg: {host: "tiempo.fiochi.com", path: "/clientraw.txt"}});
-// stations.push({code: "stperepescador", arg: {host: "www.ballena-alegre.com", path: "/meteo/clientraw.txt"}});
-stations.push({code: "xabia", arg: {host: "www.meteoxabia.com", path: "/clientraw.txt"}});
-stations.push({code: "mallorca/portopetro", arg: {host: "www.meteodemallorca.com", path:"/portopetro/clientraw.txt"}});
-stations.push({code: "mallorca/calamillor", arg: {host: "www.meteodemallorca.com", path:"/bahia_cala_millor/clientraw.txt"}});
-stations.push({code: "mallorca/eurotel", arg: {host: "www.meteodemallorca.com", path:"/eurotel/clientraw.txt"}});
-stations.push({code: "cnps", arg:{host: "www.cnps.cat", path:"/meteo_nova/clientraw.txt"}});
-stations.push({code: "cnpa", arg:{host: "www.clubnauticportdaro.cat", path:"/meteo/clientraw.txt"}});
-stations.push({code: "pinedamar", arg:{host: "serveis.pinedasensefils.cat", path:"/clientraw.txt"}});
-stations.push({code: "cnga", arg:{host: "www.cngallineras.es", path:"/meteo/clientraw.txt"}});
+stations.push({id: 1, arg:{host: "www.cnps.cat", path:"/meteo_nova/clientraw.txt"}});
+// stations.push({id: 4, arg: {host: "www.ballena-alegre.com", path: "/meteo/clientraw.txt"}});
+stations.push({id: 5, arg: {host: "www.nauticescala.com", path: "/content/conf/clientraw.txt"}});
+stations.push({id: 14, arg:{host: "serveis.pinedasensefils.cat", path:"/clientraw.txt"}});
+// Anemometre trencat stations.push({id: 23, arg: {host: "www.t33a.com", path: "/garraf/clientraw.txt"}});
+stations.push({id: 34, arg: {host: "www.cnoropesa.com", path: "/wd/clientraw.txt"}});
+stations.push({id: 39, arg: {host: "www.meteogandia.com", path: "/clientraw.txt"}});
+stations.push({id: 41, arg: {host: "www.meteoxabia.com", path: "/clientraw.txt"}});
+stations.push({id: 52, arg: {host: "www.meteodemallorca.com", path:"/eurotel/clientraw.txt"}});
+stations.push({id: 53, arg: {host: "www.meteodemallorca.com", path:"/bahia_cala_millor/clientraw.txt"}});
+stations.push({id: 54, arg: {host: "www.meteodemallorca.com", path:"/portopetro/clientraw.txt"}});
+stations.push({id: 70, arg: {host: "www.meteopuertobanus.es", path: "/clientraw.txt"}});
+stations.push({id: 80, arg: {host: "www.cngallineras.es", path: "/meteo/clientraw.txt"}});
+stations.push({id: 85, arg: {host: "tiempo.fiochi.com", path: "/clientraw.txt"}});
 stations.push(
 	{
-		code: "cne",
+		id: 6,
 		arg: {host: "www.cnestartit.es",
 		path: "/webphp/clientraw.txt"
 	},
-	post: function(res){
-		return res.then(function(data){
-			if(data.temp == -10.1)
-				data.temp = null;
-			return data;
-		});
+	post: function(data){
+		if(data == null) return null;
+		if(data.temp == -10.1)
+			data.temp = null;
+		return data;
 	}
 });
-
-
 
 function fetcher(args, timezone){
 	var host = args.host;
 	var path = args.path;
 
-	var deferred = new Q.defer();
-
-	lwutils.getHTML(host, path).then(function(html){
+	return lwutils.getHTML(host, path).map(html => {
 		var arr = html.split(" ");
 		if(arr.length < 142) return null;
 
@@ -61,11 +53,8 @@ function fetcher(args, timezone){
 		// Encara que no sigui del tot correcte, manipularé les dades en aquest cas, perque no quedi lleig en el gràfic.
 		if(ret.gust < ret.wind) ret.gust = ret.wind;
 
-
-		deferred.resolve(ret);
+		return ret;
 	});
-
-	return deferred.promise;
 }
 
 module.exports = {

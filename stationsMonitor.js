@@ -34,15 +34,24 @@ try {
 
 }
 
+const OK = 1;
+const NO_CHANGE = 2;
+const REPEAT = 3;
+const NO_DATA = 4;
+
 module.exports = {
+	OK,
+	NO_CHANGE,
+	REPEAT,
+	NO_DATA,
 	check: function(id, data) {
 		// If there's no data, then the station is not working
-		if (!data) {
+		if (!data || !data.dateTime) {
 			if (table[id]) {
 				table[id].fails = true;
 				table[id].missingLecture = true;
 			}
-			return false;
+			return NO_DATA;
 		}
 
 		data = data.toObject();
@@ -56,13 +65,13 @@ module.exports = {
 				fails: false,
 				missingLecture: false
 			}
-			return 1;
+			return OK;
 		}
 
 		// If the time hasn't changed, then we are getting the same data: Do not write.
 		if (data.dateTime == table[id].data.dateTime) {
 			table[id].missingLecture = true;
-			return false;
+			return NO_CHANGE;
 		} else {
 			table[id].missingLecture = false;
 		}
@@ -80,18 +89,19 @@ module.exports = {
 				table[id].fails = true;
 			}
 
-			return false;
+			return REPEAT;
 		} else {
 			/*console.log(Math.abs(data.wind - table[id].data.wind), data.wind >= 1,
 				Math.abs(data.gust - table[id].data.gust),
 				Math.abs(data.dir - table[id].data.dir));*/
 
-			var nRepeats = table[id].fails ? 0 : table[id].repetitions;
+			// var nRepeats = table[id].fails ? 0 : table[id].repetitions;
 			table[id].repetitions = 0;
 			table[id].fails = false;
 			table[id].data = data;
 
-			return nRepeats ? nRepeats + 1 : 1;
+			// return nRepeats ? nRepeats + 1 : 1;
+			return OK;
 		}
 	},
 	save: function() {
