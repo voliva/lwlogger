@@ -17,6 +17,8 @@ I started this project when I was at uni mostly because I found it useful for my
 
 Instead of directly closing the project and website, I'd like to give it a chance for anyone to collaborate through an Open Source model. The code is pretty much as-is, and with all of the three git repositories it should be possible to build the whole livewind app. I'm willing to transfer the livewind.es domain as well.
 
+You can contact me at olivarra1 [at] gmail.com
+
 ### License
 
 [GNU GPL v3](./LICENSE).
